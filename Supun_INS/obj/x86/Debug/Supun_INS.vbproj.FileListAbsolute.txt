@@ -1,0 +1,15 @@
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.exe
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.pdb
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.xml
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.About.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.DrugDetails.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDrugPopUp.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmLoginScreen.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.MDIParent1.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.Resources.resources
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.read.1.tlog
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.exe
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.xml
+c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.pdb

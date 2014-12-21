@@ -1,0 +1,351 @@
+﻿Public Class DrugDetails
+    Public strTType As String = ""
+    Private strRDBText As String = ""
+    Private o1 As New Order
+    Private d1 As New Drugs
+
+
+
+    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+        Call clearALL()
+
+
+    End Sub
+
+    Public Sub clearALL()
+        txtTotStock.Enabled = False ' just displaying the total
+
+
+        rdbIssueDrug.Checked = False
+        rdbRecieveDrug.Checked = False
+        lblRecieveOrderNumber.Text = "Receive  Number"
+        lblRevieceAmount.Text = "Receive Amount"
+        lblRecieveDate.Text = "Receive Date"
+        dtDOExpiry.Value = Today
+        dtManDate.Value = Today
+        dtREcDate.Value = Today
+        strTType = ""
+        strRDBText = ""
+
+        DataGridView1.Columns.Clear()
+        DataGridView1.ColumnCount = 7
+
+        btnAdd.Enabled = False
+        btnRemove.Enabled = False
+        btnUpdate.Enabled = False
+
+        With DataGridView1
+
+            .Columns(0).Name = "Stock Label"
+            .Columns(1).Name = "SR Number"
+            .Columns(2).Name = "Drug Name"
+            .Columns(3).Name = "Manufacture Date"
+            .Columns(4).Name = "Expirary Date"
+            .Columns(5).Name = "Amount"
+            .Columns(6).Name = "Total Stock"
+        End With
+
+
+        Me.txtDrugName.Clear()
+        Me.txtRecAmount.Clear()
+        Me.txtSRNumber.Clear()
+        Me.txtOrderNumber.Clear()
+        Me.txtStockLabel.Clear()
+        Me.txtTotStock.Text = 0
+
+        Me.txtOrderNumber.Clear()
+        Me.txtOrderNumber.Focus()
+
+    End Sub
+
+    Private Sub rdbRecieveDrug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbRecieveDrug.CheckedChanged
+        lblRecieveOrderNumber.Text = "Receive Number"
+        lblRevieceAmount.Text = "Recieve Amount"
+        lblRecieveDate.Text = "Recieve Date"
+        strTType = "REC"
+        o1.setoType("REC")
+        strRDBText = "Recieve"
+    End Sub
+
+    Private Sub rdbIssueDrug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbIssueDrug.CheckedChanged
+        lblRecieveOrderNumber.Text = "Order Number"
+        lblRevieceAmount.Text = "Order Amount"
+        lblRecieveDate.Text = "Order Date"
+        strTType = "ISS"
+        o1.setoType("ISS")
+        strRDBText = "Issue"
+    End Sub
+
+    Private Sub DrugDetails_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Call clearALL()
+
+    End Sub
+
+    Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
+        Dim strRes As String
+        If strTType = "" Then
+            msgB.msgOKInf("Please select a Transaction type to continue")
+            Exit Sub
+        End If
+
+        strRes = o1.setoDateOfIsse(dtREcDate.Value)
+        If strRes <> "OK" Then
+            msgB.msgOKInf("Please check your date")
+            Exit Sub
+        End If
+
+        strRes = o1.setONumber(Me.txtOrderNumber.Text)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+            Me.txtOrderNumber.Clear()
+            Me.txtOrderNumber.Focus()
+            Exit Sub
+        End If
+        strRes = d1.setdLabel(Me.txtStockLabel.Text)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+            Me.txtStockLabel.Clear()
+            Me.txtStockLabel.Focus()
+            Exit Sub
+        End If
+        strRes = d1.setDSRnumber(Me.txtSRNumber.Text)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+            Me.txtSRNumber.Clear()
+            Me.txtSRNumber.Focus()
+            Exit Sub
+        End If
+        strRes = d1.setdName(Me.txtDrugName.Text)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+            Me.txtDrugName.Clear()
+            Me.txtDrugName.Focus()
+            Exit Sub
+        End If
+        strRes = d1.setdManDAte(dtManDate.Value)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+
+            Exit Sub
+        End If
+        strRes = d1.setdExpDAte(dtDOExpiry.Value, dtManDate.Value)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+
+            Exit Sub
+        End If
+
+        strRes = d1.setdRecieved(Me.txtRecAmount.Text, o1.getoType)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+
+            Exit Sub
+        End If
+        strRes = d1.setdTot(Me.txtTotStock.Text)
+        If strRes <> STROK Then
+            msgB.msgOKInf(strRes)
+
+            Exit Sub
+        End If
+   
+        DataGridView1.Rows.Add(d1.getdLabel, d1.getDSRnumber, d1.getdName, d1.getdManDAte, d1.getdExpDAte,
+                                d1.getdRecieved, d1.getdTot)
+
+        Me.txtSRNumber.Clear()
+        Me.txtDrugName.Clear()
+        Me.dtManDate.Value = Now
+        Me.dtDOExpiry.Value = Now
+        Me.txtStockLabel.Clear()
+
+        Me.txtRecAmount.Clear()
+        btnRemove.Enabled = True
+        Me.btnUpdate.Enabled = True
+
+
+    End Sub
+
+    Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
+        If DataGridView1.Rows.Count - 1 = 0 Then
+            msgB.msgOKInf("No data to save")
+            Exit Sub
+        End If
+
+        Dim res As String
+        res = DAO.addOderDetails(DAO.getOrderTableCount(), o1.getOnumber, o1.getoDateOfIsse, o1.getoType)
+
+        Dim inti As Integer
+        For inti = 0 To DataGridView1.Rows.Count - 2
+            With DataGridView1.Rows(inti)
+                DAO.addDrugDetails(DAO.getDrugTableCount(), .Cells(0).Value, .Cells(1).Value, .Cells(2).Value,
+                                   .Cells(3).Value, .Cells(4).Value, .Cells(5).Value, .Cells(6).Value, o1.getOnumber.ToString())
+            End With
+        Next
+        msgB.msgOKInf("Added New order details successfully")
+
+        Call clearALL()
+
+    End Sub
+
+    Private Sub txtOrderNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOrderNumber.KeyPress
+
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            o1.setONumber(Me.txtOrderNumber.Text)
+            If IsNothing(o1.getOnumber) = True Then
+                msgB.msgOKInf(strRDBText + " number can not be a blank")
+                Me.txtOrderNumber.Focus()
+                Exit Sub
+            End If
+            Dim dsDROID = DAO.getOrderDetailsByOID(o1.getOnumber)
+            If dsDROID.Tables(strDBNAME).Rows.Count = 0 Then
+                Dim res As Boolean
+                res = msgB.msgYesNoQuestion(strRDBText + " number does not exists. Do you want to add ?")
+                If res = True Then
+                    Me.txtSRNumber.Focus()
+                    Exit Sub
+
+                Else
+                    Call clearALL()
+                    Exit Sub
+                End If
+            Else
+                Dim res As Boolean
+                res = msgB.msgYesNoQuestion(strRDBText + " number already exists, Do you want to view ?")
+                If res = True Then
+                    Dim dsOR As DataSet = DAO.getOrderDetailsByOID(o1.getOnumber)
+                    ' Dim intOR As Integer
+                    ' For intOR = 0 To dsOR.Tables(strDBNAME).Rows.Count - 1
+
+                    dtREcDate.Value = dsOR.Tables(strDBNAME).Rows(0).Item("OTRDate")
+                    If dsOR.Tables(strDBNAME).Rows(0).Item("OTRType") = "REC" Then
+                        rdbRecieveDrug.Checked = True
+                        ' loading drug details even if it is issue or a Order if that order number exists
+                    Else
+                        ' rdbRecieveDrug.Checked = False
+                        rdbIssueDrug.Checked = True
+
+                    End If
+
+                    Dim dsRdrug As DataSet = DAO.getDrugDetailsByOID(o1.getOnumber)
+                    Dim intd As Integer
+                    For intd = 0 To dsRdrug.Tables(strDBNAME).Rows.Count - 1
+                        With dsRdrug.Tables(strDBNAME).Rows(intd)
+                            DataGridView1.Rows.Add(.Item("dLabel").ToString, .Item("dSRNumber").ToString, .Item("dName").ToString, .Item("dManDate").ToString,
+                                                .Item("dExpDate").ToString, .Item("dAvailAmt"), .Item("dAvailAmt"))
+
+                        End With
+                    Next
+
+                    Exit Sub
+                    'rdbIssueDrug.Checked = False
+                    ' Next
+                    Exit Sub
+                Else
+                    Call clearALL()
+                    Exit Sub
+                End If
+            End If
+
+        End If
+    End Sub
+
+
+    Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
+        'Dim dsR As DataSet = DAO.getDrugsExpireInThreeMonths(Today.Date)
+        'Dim intI As Integer
+        'For intI = 0 To dsR.Tables(strDBNAME).Rows.Count - 1
+        '    msgB.msgOKInf(dsR.Tables(strDBNAME).Rows(intI).Item("dname"))
+        'Next
+
+        If DataGridView1.Rows.Count <> 1 Then
+            If Not DataGridView1.CurrentRow.IsNewRow Then
+                DataGridView1.Rows.Remove(DataGridView1.CurrentRow)
+            Else
+                msgB.msgOKInf("No data to remove")
+                btnRemove.Enabled = False
+            End If
+        End If
+
+    End Sub
+
+    Private Sub btnClose_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClose.Click
+        Me.Close()
+
+
+    End Sub
+
+    Private Sub txtRecAmount_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtRecAmount.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            Dim ResR = d1.setdRecieved(Me.txtRecAmount.Text, strRDBText)
+            If ResR <> STROK Then
+                msgB.msgOKInf(ResR)
+                Me.txtRecAmount.Clear()
+                Me.txtRecAmount.Focus()
+                Exit Sub
+
+            End If
+            If o1.getoType = "REC" Then
+                Me.txtTotStock.Text = Convert.ToDouble(Me.txtTotStock.Text) + Convert.ToDouble(Me.txtRecAmount.Text)
+            ElseIf o1.getoType = "ISS" Then
+                If Me.txtRecAmount.Text > Me.txtTotStock.Text Then
+                    msgB.msgOKInf("Not enought stock. Please check the amount you need to issue")
+                    Exit Sub
+                Else
+                    Me.txtTotStock.Text = Convert.ToDouble(Me.txtTotStock.Text) - Convert.ToDouble(Me.txtRecAmount.Text)
+                End If
+            Else
+                msgB.msgOKCri("Seriouse Error ..!  Please contact your systems administrator for more inforamtion")
+                '' Log this error.
+                Exit Sub
+            End If
+            btnAdd.Enabled = True
+        End If
+    End Sub
+
+    Private Sub txtDrugName_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDrugName.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            Dim res = d1.setdName(Me.txtDrugName.Text)
+            If res <> STROK Then
+                msgB.msgOKInf(res)
+                Exit Sub
+            End If
+            If o1.getoType = "REC" Then
+                Me.txtStockLabel.Focus()
+                Exit Sub
+            End If
+            d1.setdName(Me.txtDrugName.Text)
+            If IsNothing(d1.getdName) = False Then
+
+                Dim dsA As DataSet = DAO.getDrugDetails(d1.getdName)
+                ' msgB.msgOKInf(dsA.Tables(strDBNAME).Rows.Count)
+                'msgB.msgOKInf(dsA.Tables(strDBNAME).Rows(0).Item("dSRNumber"))
+                If dsA.Tables(strDBNAME).Rows.Count <> 0 And dsA.Tables(strDBNAME).Rows.Count <> 1 Then
+
+                    string_drugname = Me.txtDrugName.Text
+                    Dim popUpDrug As New frmDrugPopUp
+                    popUpDrug.ShowDialog()
+
+                    '' we just load the drug name with the details
+                ElseIf dsA.Tables(strDBNAME).Rows.Count = 1 Then
+                    With dsA.Tables(strDBNAME).Rows(0)
+                        Me.txtSRNumber.Text = .Item("dSRNumber")
+                        Me.dtManDate.Value = .Item("dManDate")
+                        Me.dtDOExpiry.Value = .Item("dExpDate")
+                        Me.txtStockLabel.Text = .Item("dLabel")
+                        Me.txtTotStock.Text = .Item("dAvailAmt")
+
+                    End With
+                Else
+                    msgB.msgOKInf("Drug Not available in stocks. Try with DSR number...! ")
+                    Exit Sub
+                End If
+            Else
+                msgB.msgOKInf("Drug name not available in the stocks. Please check your spelling")
+                Exit Sub
+            End If
+        End If
+    End Sub
+
+    Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
+
+    End Sub
+End Class

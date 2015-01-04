@@ -13,3 +13,5 @@ c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.exe
 c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.xml
 c:\users\mihindu\documents\visual studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.pdb
+C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.1005.tlog
+C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.1065.tlog

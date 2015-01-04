@@ -3,7 +3,7 @@
 ''' </summary>
 ''' <remarks>Mihindu Wijesena 09/01/2013 </remarks>
 Public Class classDAOAccessDB
-''' <summary>
+    ''' <summary>
     ''' Checks the user availability.
     ''' checks for the user name and password
     ''' </summary>
@@ -84,17 +84,17 @@ Public Class classDAOAccessDB
     ''' <remarks></remarks>
 
 
-    Public Function getDrugTableCount() As Integer
-        DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLC As String = "Select  *  from table_Drug "
-        Dim dsC As New DataSet
-        Dim daC As New OleDb.OleDbDataAdapter(strSQLC, DBcn)
-        daC.Fill(dsC, strDBNAME)
+    'Public Function getDrugTableCount() As Integer
+    '    DBConnection.getAccessDBConnection(strDBNAME)
+    '    Dim strSQLC As String = "Select  *  from table_Drug "
+    '    Dim dsC As New DataSet
+    '    Dim daC As New OleDb.OleDbDataAdapter(strSQLC, DBcn)
+    '    daC.Fill(dsC, strDBNAME)
 
-        Dim rc As Integer = dsC.Tables(strDBNAME).Rows.Count
+    '    Dim rc As Integer = dsC.Tables(strDBNAME).Rows.Count
 
-        Return rc
-    End Function
+    '    Return rc
+    'End Function
 
     ''' <summary>
     ''' Get order table count
@@ -113,10 +113,10 @@ Public Class classDAOAccessDB
         Return rc
     End Function
 
-    Public Function addOderDetails(ByVal id As Integer, ByVal oid As String, ByVal ORTDAte As Date, ByVal OTRtype As String) As String
+    Public Function addOder(ByVal OrderNo As String, ByVal OrderDate As Date, ByVal OrderType As String, ByVal OrderItems As Integer) As String
         DBConnection.getAccessDBConnection(strDBNAME)
         Dim dsA As New DataSet
-        Dim STRSQLA As String = "Select * from table_OrderDetails"
+        Dim STRSQLA As String = "Select * from table_Order"
         Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
         daA.Fill(dsA, strDBNAME)
 
@@ -125,20 +125,24 @@ Public Class classDAOAccessDB
         dsnrA = dsA.Tables(strDBNAME).NewRow
 
         With dsnrA
-            .Item("id") = id
-            .Item("Oid") = oid
-            .Item("OTRDate") = ORTDAte
-            .Item("OTRType") = OTRtype
+            .Item("OrderNo") = OrderNo
+            .Item("OrderDate") = OrderDate
+            .Item("OrderType") = OrderType
+            .Item("OrderItems") = OrderItems
+
         End With
         dsA.Tables(strDBNAME).Rows.Add(dsnrA)
         daA.Update(dsA, strDBNAME)
+        dsA = Nothing
+        daA = Nothing
+
         Return "Added"
     End Function
 
 
-    Public Function getOrderDetailsByOID(ByVal OID As String) As DataSet
+    Public Function getOrderIDByOID(ByVal OID As String) As DataSet
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_OrderDetails where OID = '" & OID & "'"
+        Dim strSQLOID As String = "Select * from table_Order where OrderNo = '" & OID & "'"
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
@@ -147,9 +151,9 @@ Public Class classDAOAccessDB
 
     End Function
 
-    Public Function getDrugDetailsByOID(ByVal OID As String) As DataSet
+    Public Function getDrugByOID(ByVal OID As String) As DataSet
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_Drug where OID = '" & OID & "'"
+        Dim strSQLOID As String = "Select * from table_Drug where OrderNo = '" & OID & "'"
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
@@ -174,12 +178,117 @@ Public Class classDAOAccessDB
     Public Function getDrugDetails(ByVal drugName As String) As DataSet
         '  Dim months As Date = dtToday.AddMonths(2)
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_Drug where dName = '" & drugName & "'"
+        Dim strSQLOID As String = "Select * from table_Drug where dName like '%" & drugName & "'"
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
 
         Return dsOID
+
+    End Function
+
+
+    Public Function addDrugDetailsPerOrder(ByVal dID As String, ByVal dSRNumber As String, ByVal dName As String, _
+                                           ByVal dManDate As Date, ByVal dExpDate As Date, ByVal dAvailAmt As String, ByVal dLabel As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_Drug"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        Dim dsnrA As DataRow
+        dsnrA = dsA.Tables(strDBNAME).NewRow
+
+        With dsnrA
+            .Item("dID") = dID
+            .Item("dSRNumber") = dSRNumber
+            .Item("dName") = dName
+            .Item("dManDate") = dManDate
+            .Item("dExpDate") = dExpDate
+            .Item("dAvailAmt") = dAvailAmt
+            .Item("dLabel") = dLabel
+
+        End With
+        dsA.Tables(strDBNAME).Rows.Add(dsnrA)
+        daA.Update(dsA, strDBNAME)
+        Return "Added"
+        DBConnection.closeDBConnection()
+    End Function
+
+    Public Function getDrugTableCount() As Integer
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLC As String = "Select   COUNT (*)  from table_Drug "
+        Dim dsC As New DataSet
+        Dim daC As New OleDb.OleDbDataAdapter(strSQLC, DBcn)
+        daC.Fill(dsC, strDBNAME)
+
+        ' msgB.msgOKInf("row count is" & dsC.Tables(strDBNAME).Rows(0).Item(0).ToString)
+        Dim rc As Integer = dsC.Tables(strDBNAME).Rows(0).Item(0)
+
+        Return rc
+    End Function
+
+    Public Function addOderDetails(ByVal ID As String, ByVal OrderNo As String, ByVal DrugId As String, _
+                                          ByVal OrderAmount As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_OrderDetails"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        Dim dsnrA As DataRow
+        dsnrA = dsA.Tables(strDBNAME).NewRow
+
+        With dsnrA
+            '.Item("id") = ID
+            .Item("OrderNo") = OrderNo
+            .Item("DrugId") = DrugId
+            .Item("OrderAmount") = OrderAmount
+
+
+
+        End With
+        dsA.Tables(strDBNAME).Rows.Add(dsnrA)
+        daA.Update(dsA, strDBNAME)
+        Return "Added"
+        DBConnection.closeDBConnection()
+    End Function
+
+
+    Public Function getOrderDetailsByOrderID(ByVal OrderID As String) As DataSet
+
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_OrderDetails where OrderNo = '" & OrderID & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID
+
+    End Function
+
+
+    Public Function getDrugDataByDrugID(ByVal drugID As String) As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID1 As String = "Select * from table_drug where dID = '" & drugID & "'"
+        Dim dsOID1 As New DataSet
+        Dim daOID1 As New OleDb.OleDbDataAdapter(strSQLOID1, DBcn)
+        daOID1.Fill(dsOID1, strDBNAME)
+        Return dsOID1
+
+
+    End Function
+
+    Public Function getOrderDataByOrderID(ByVal OrderID As String) As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID1 As String = "Select * from table_Order where OrderNo = '" & OrderID & "'"
+        Dim dsOID1 As New DataSet
+        Dim daOID1 As New OleDb.OleDbDataAdapter(strSQLOID1, DBcn)
+        daOID1.Fill(dsOID1, strDBNAME)
+        Return dsOID1
+
 
     End Function
 End Class

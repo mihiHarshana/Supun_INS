@@ -52,6 +52,7 @@
         Me.txtOrderNumber.Clear()
         Me.txtStockLabel.Clear()
         Me.txtTotStock.Text = 0
+        Me.txtOrderNo1.Clear()
 
         Me.txtOrderNumber.Clear()
         Me.txtOrderNumber.Focus()
@@ -65,6 +66,7 @@
         strTType = "REC"
         o1.setoType("REC")
         strRDBText = "Recieve"
+        Me.txtOrderNo1.Text = GenerateOrderNo()
     End Sub
 
     Private Sub rdbIssueDrug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbIssueDrug.CheckedChanged
@@ -74,6 +76,7 @@
         strTType = "ISS"
         o1.setoType("ISS")
         strRDBText = "Issue"
+        Me.txtOrderNo1.Text = GenerateOrderNo()
     End Sub
 
     Private Sub DrugDetails_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -147,7 +150,7 @@
 
             Exit Sub
         End If
-   
+
         DataGridView1.Rows.Add(d1.getdLabel, d1.getDSRnumber, d1.getdName, d1.getdManDAte, d1.getdExpDAte,
                                 d1.getdRecieved, d1.getdTot)
 
@@ -160,7 +163,7 @@
         Me.txtRecAmount.Clear()
         btnRemove.Enabled = True
         Me.btnUpdate.Enabled = True
-
+        Me.txtTotStock.Text = "0"
 
     End Sub
 
@@ -171,13 +174,20 @@
         End If
 
         Dim res As String
-        res = DAO.addOderDetails(DAO.getOrderTableCount(), o1.getOnumber, o1.getoDateOfIsse, o1.getoType)
+        msgB.msgOKInf(o1.getOnumber)
+        o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
+        res = DAO.addOder(o1.getOnumber, o1.getoDateOfIsse, o1.getoType, DataGridView1.RowCount - 1)
+
+        Dim DrugID As String
 
         Dim inti As Integer
         For inti = 0 To DataGridView1.Rows.Count - 2
             With DataGridView1.Rows(inti)
-                DAO.addDrugDetails(DAO.getDrugTableCount(), .Cells(0).Value, .Cells(1).Value, .Cells(2).Value,
-                                   .Cells(3).Value, .Cells(4).Value, .Cells(5).Value, .Cells(6).Value, o1.getOnumber.ToString())
+                DrugID = GenerateDrugID()
+                DAO.addDrugDetailsPerOrder(DrugID, .Cells(1).Value, .Cells(2).Value, .Cells(3).Value, .Cells(4).Value,
+                                           .Cells(5).Value, .Cells(0).Value)
+
+                DAO.addOderDetails("0", o1.getOnumber, DrugID, .Cells(5).Value)
             End With
         Next
         msgB.msgOKInf("Added New order details successfully")
@@ -189,13 +199,19 @@
     Private Sub txtOrderNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOrderNumber.KeyPress
 
         If e.KeyChar = ChrW(Keys.Enter) Then
-            o1.setONumber(Me.txtOrderNumber.Text)
+            If Me.rdbIssueDrug.Checked = False And Me.rdbRecieveDrug.Checked = False Then
+                msgB.msgOKInf("Please select a transaction type")
+                Call clearALL()
+
+                Exit Sub
+            End If
+            o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
             If IsNothing(o1.getOnumber) = True Then
                 msgB.msgOKInf(strRDBText + " number can not be a blank")
                 Me.txtOrderNumber.Focus()
                 Exit Sub
             End If
-            Dim dsDROID = DAO.getOrderDetailsByOID(o1.getOnumber)
+            Dim dsDROID = DAO.getOrderIDByOID(o1.getOnumber)
             If dsDROID.Tables(strDBNAME).Rows.Count = 0 Then
                 Dim res As Boolean
                 res = msgB.msgYesNoQuestion(strRDBText + " number does not exists. Do you want to add ?")
@@ -211,12 +227,12 @@
                 Dim res As Boolean
                 res = msgB.msgYesNoQuestion(strRDBText + " number already exists, Do you want to view ?")
                 If res = True Then
-                    Dim dsOR As DataSet = DAO.getOrderDetailsByOID(o1.getOnumber)
+                    Dim dsOR As DataSet = DAO.getOrderIDByOID(o1.getOnumber)
                     ' Dim intOR As Integer
                     ' For intOR = 0 To dsOR.Tables(strDBNAME).Rows.Count - 1
 
-                    dtREcDate.Value = dsOR.Tables(strDBNAME).Rows(0).Item("OTRDate")
-                    If dsOR.Tables(strDBNAME).Rows(0).Item("OTRType") = "REC" Then
+                    dtREcDate.Value = dsOR.Tables(strDBNAME).Rows(0).Item("OrderDate")
+                    If dsOR.Tables(strDBNAME).Rows(0).Item("OrderType") = "REC" Then
                         rdbRecieveDrug.Checked = True
                         ' loading drug details even if it is issue or a Order if that order number exists
                     Else
@@ -225,19 +241,35 @@
 
                     End If
 
-                    Dim dsRdrug As DataSet = DAO.getDrugDetailsByOID(o1.getOnumber)
-                    Dim intd As Integer
-                    For intd = 0 To dsRdrug.Tables(strDBNAME).Rows.Count - 1
-                        With dsRdrug.Tables(strDBNAME).Rows(intd)
+                    Dim dsRdrug As DataSet = DAO.getOrderIDByOID(o1.getOnumber)
+                    Dim str As Array = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderNo").ToString.Split("-")
+                    Me.txtOrderNo1.Text = str(0)
+                    Me.dtREcDate.Value = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderDate")
+                    Dim strOType As String = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderType")
+                    If strOType = "REC" Then
+                        Me.rdbRecieveDrug.Checked = True
+
+                    End If
+                    If strOType = "ISS" Then
+                        Me.rdbIssueDrug.Checked = True
+
+                    End If
+                    Dim daA2 = DAO.getOrderDataByOrderID(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
+                    Dim daOdetails As DataSet
+                    Dim drugId As String
+                    Dim dtDrugData As DataSet
+                    Dim into As Integer
+                    For into = 0 To daA2.Tables(strDBNAME).Rows(into).Item("OrderItems") - 1
+                        daOdetails = DAO.getOrderDetailsByOrderID(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
+                        drugId = daOdetails.Tables(strDBNAME).Rows(into).Item("DrugId")
+                        dtDrugData = DAO.getDrugDataByDrugID(drugId)
+
+                        With dtDrugData.Tables(strDBNAME).Rows(0)
                             DataGridView1.Rows.Add(.Item("dLabel").ToString, .Item("dSRNumber").ToString, .Item("dName").ToString, .Item("dManDate").ToString,
                                                 .Item("dExpDate").ToString, .Item("dAvailAmt"), .Item("dAvailAmt"))
-
                         End With
                     Next
-
                     Exit Sub
-                    'rdbIssueDrug.Checked = False
-                    ' Next
                     Exit Sub
                 Else
                     Call clearALL()
@@ -286,7 +318,7 @@
             If o1.getoType = "REC" Then
                 Me.txtTotStock.Text = Convert.ToDouble(Me.txtTotStock.Text) + Convert.ToDouble(Me.txtRecAmount.Text)
             ElseIf o1.getoType = "ISS" Then
-                If Me.txtRecAmount.Text > Me.txtTotStock.Text Then
+                If Convert.ToInt32(Me.txtRecAmount.Text) > Convert.ToInt32(Me.txtTotStock.Text) Then
                     msgB.msgOKInf("Not enought stock. Please check the amount you need to issue")
                     Exit Sub
                 Else
@@ -345,7 +377,24 @@
         End If
     End Sub
 
-    Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
+    Private Function GenerateOrderNo()
+        Dim value As String = ""
+
+        value = o1.getoType & Now.Year & Now.Month & Now.Day & "-"
+        Return value
+
+    End Function
+
+    Private Function GenerateDrugID() As String
+        Dim value As String = ""
+
+        value = Now.Year & Now.Month & Now.Day & Now.Hour & Now.Minute & Now.Second
+        msgB.msgOKInf(value)
+        Return value
+
+    End Function
+
+    Private Sub txtOrderNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOrderNumber.TextChanged
 
     End Sub
 End Class

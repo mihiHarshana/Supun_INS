@@ -91,13 +91,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Drugs.vb" />
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmDrugPopUp.Designer.vb">
       <DependentUpon>frmDrugPopUp.vb</DependentUpon>
     </Compile>
@@ -110,7 +103,9 @@
     <Compile Include="frmLoginScreen.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MDIParent1.Designer.vb" />
+    <Compile Include="MDIParent1.Designer.vb">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </Compile>
     <Compile Include="MDIParent1.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -145,7 +140,9 @@
     <EmbeddedResource Include="frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MDIParent1.resx" />
+    <EmbeddedResource Include="MDIParent1.resx">
+      <DependentUpon>MDIParent1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

@@ -52,13 +52,7 @@ Public Class MDIParent1
         'Use My.Computer.Clipboard.GetText() or My.Computer.Clipboard.GetData to retrieve information from the clipboard.
     End Sub
 
-    Private Sub ToolBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
 
-    End Sub
-
-    Private Sub StatusBarToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
-
-    End Sub
 
     Private Sub CascadeToolStripMenuItem_Click(ByVal sender As Object, ByVal e As EventArgs)
         Me.LayoutMdi(MdiLayout.Cascade)
@@ -85,53 +79,13 @@ Public Class MDIParent1
 
     Private m_ChildFormNumber As Integer
 
-    Private Sub MDIParent1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        Dim res = MessageBox.Show("Are you sure to Exit?", "EXIT " & STRTITLE, MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-        If res = vbYes Then
-            End
-        Else
-            e.Cancel = True
-        End If
-    End Sub
+    Private Sub FileToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileToolStripMenuItem.Click
 
-    Private Sub MDIParent1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        Me.Text = " Inventory Control System V1.0 Build 2014_11_08 - License to Dr Supun Withana "
-        DataGridView1.Columns.Clear()
-        DataGridView1.ColumnCount = 2
-        With DataGridView1
-
-            .Columns(0).Name = "Drug Name"
-            .Columns(1).Name = "Date Of Expirary"
-
-        End With
-
-        Dim intI As Integer
-        Dim dsR = DAO.getDrugsExpireInThreeMonths(Today.Date)
-
-        For intI = 0 To dsR.Tables(strDBNAME).Rows.Count - 1
-            With dsR.Tables(strDBNAME).Rows(intI)
-                DataGridView1.Rows.Add(.Item("dName"), .Item("dManDate"))
-            End With
-        Next
     End Sub
 
     Private Sub InventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryToolStripMenuItem.Click
-        If frm_drugDetails.IsDisposed = True Then
-            frm_drugDetails = New DrugDetails
-        End If
-        frm_drugDetails.Show()
-
-
-    End Sub
-
-    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
-        Me.Close()
-
-    End Sub
-
-    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
-        Dim frm_About As New About
-        frm_About.ShowDialog()
+        Dim f_drugDetails As New DrugDetails
+        f_drugDetails.Show()
 
     End Sub
 End Class

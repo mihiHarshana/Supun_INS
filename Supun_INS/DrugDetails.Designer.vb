@@ -49,6 +49,7 @@ Partial Class DrugDetails
         Me.btnRemove = New System.Windows.Forms.Button()
         Me.txtStockLabel = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtOrderNo1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -190,15 +191,15 @@ Partial Class DrugDetails
         'txtOrderNumber
         '
         Me.txtOrderNumber.BackColor = System.Drawing.Color.Khaki
-        Me.txtOrderNumber.Location = New System.Drawing.Point(316, 19)
+        Me.txtOrderNumber.Location = New System.Drawing.Point(444, 15)
         Me.txtOrderNumber.Name = "txtOrderNumber"
-        Me.txtOrderNumber.Size = New System.Drawing.Size(102, 20)
+        Me.txtOrderNumber.Size = New System.Drawing.Size(61, 20)
         Me.txtOrderNumber.TabIndex = 2
         '
         'lblRecieveOrderNumber
         '
         Me.lblRecieveOrderNumber.AutoSize = True
-        Me.lblRecieveOrderNumber.Location = New System.Drawing.Point(225, 22)
+        Me.lblRecieveOrderNumber.Location = New System.Drawing.Point(238, 18)
         Me.lblRecieveOrderNumber.Name = "lblRecieveOrderNumber"
         Me.lblRecieveOrderNumber.Size = New System.Drawing.Size(73, 13)
         Me.lblRecieveOrderNumber.TabIndex = 19
@@ -234,7 +235,7 @@ Partial Class DrugDetails
         'dtREcDate
         '
         Me.dtREcDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtREcDate.Location = New System.Drawing.Point(578, 18)
+        Me.dtREcDate.Location = New System.Drawing.Point(588, 15)
         Me.dtREcDate.Name = "dtREcDate"
         Me.dtREcDate.Size = New System.Drawing.Size(114, 20)
         Me.dtREcDate.TabIndex = 25
@@ -242,7 +243,7 @@ Partial Class DrugDetails
         'lblRecieveDate
         '
         Me.lblRecieveDate.AutoSize = True
-        Me.lblRecieveDate.Location = New System.Drawing.Point(501, 23)
+        Me.lblRecieveDate.Location = New System.Drawing.Point(522, 18)
         Me.lblRecieveDate.Name = "lblRecieveDate"
         Me.lblRecieveDate.Size = New System.Drawing.Size(30, 13)
         Me.lblRecieveDate.TabIndex = 24
@@ -291,12 +292,21 @@ Partial Class DrugDetails
         Me.Label7.TabIndex = 30
         Me.Label7.Text = "Stock Label"
         '
+        'txtOrderNo1
+        '
+        Me.txtOrderNo1.BackColor = System.Drawing.Color.Khaki
+        Me.txtOrderNo1.Location = New System.Drawing.Point(341, 15)
+        Me.txtOrderNo1.Name = "txtOrderNo1"
+        Me.txtOrderNo1.Size = New System.Drawing.Size(97, 20)
+        Me.txtOrderNo1.TabIndex = 31
+        '
         'DrugDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(714, 422)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtOrderNo1)
         Me.Controls.Add(Me.txtStockLabel)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.btnRemove)
@@ -362,4 +372,5 @@ Partial Class DrugDetails
     Friend WithEvents btnRemove As System.Windows.Forms.Button
     Friend WithEvents txtStockLabel As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents txtOrderNo1 As System.Windows.Forms.TextBox
 End Class

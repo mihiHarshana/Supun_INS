@@ -57,12 +57,6 @@ Supun_INS
 	<param name="strUpword"></param>
 	<returns></returns>
 	<remarks></remarks>
-</member><member name="M:Supun_INS.classDAOAccessDB.getDrugTableCount">
-	<summary>
- GEt Drug Table count
- </summary>
-	<returns></returns>
-	<remarks></remarks>
 </member><member name="M:Supun_INS.classDAOAccessDB.getOrderTableCount">
 	<summary>
  Get order table count

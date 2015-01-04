@@ -84,8 +84,9 @@ Public Class MDIParent1
     End Sub
 
     Private Sub InventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryToolStripMenuItem.Click
-        Dim f_drugDetails As New DrugDetails
-        f_drugDetails.Show()
+
+        frm_drugDetails = New DrugDetails
+        frm_drugDetails.Show()
 
     End Sub
 End Class

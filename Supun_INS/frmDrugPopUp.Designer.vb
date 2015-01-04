@@ -25,6 +25,7 @@ Partial Class frmDrugPopUp
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtDrugName = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,22 +43,32 @@ Partial Class frmDrugPopUp
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(22, 9)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(81, 13)
+        Me.Label1.Size = New System.Drawing.Size(95, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Available Drugs"
+        Me.Label1.Text = "Available Drugs by"
         '
         'txtDrugName
         '
-        Me.txtDrugName.Location = New System.Drawing.Point(157, 9)
+        Me.txtDrugName.Location = New System.Drawing.Point(263, 9)
         Me.txtDrugName.Name = "txtDrugName"
-        Me.txtDrugName.Size = New System.Drawing.Size(172, 20)
+        Me.txtDrugName.Size = New System.Drawing.Size(196, 20)
         Me.txtDrugName.TabIndex = 2
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(132, 12)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(125, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "SR number / Drug Name"
         '
         'frmDrugPopUp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(571, 304)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.txtDrugName)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
@@ -71,4 +82,5 @@ Partial Class frmDrugPopUp
     Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents txtDrugName As System.Windows.Forms.TextBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

@@ -14,8 +14,9 @@
 
 
     Public string_drugname As String = ""
+    Public string_dsrNumber As String = ""
 
 
-    Public frm_drugDetails As New DrugDetails
-
+    Public frm_drugDetails As DrugDetails
+    Public frm_DrubPopUPStatus As String = ""
 End Module

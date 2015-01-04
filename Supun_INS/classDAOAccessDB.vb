@@ -178,7 +178,32 @@ Public Class classDAOAccessDB
     Public Function getDrugDetails(ByVal drugName As String) As DataSet
         '  Dim months As Date = dtToday.AddMonths(2)
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_Drug where dName like '%" & drugName & "'"
+        Dim strSQLOID As String = "Select * from table_Drug where dName like '%" & drugName & "%'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID
+
+    End Function
+
+
+    Public Function getDrugDetails(ByVal drugName As String, ByVal dsrNumbber As String) As DataSet
+        '  Dim months As Date = dtToday.AddMonths(2)
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_Drug where dName like '%" & drugName & "%' or dSRNumber like '%" & dsrNumbber & "%'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID
+
+    End Function
+
+    Public Function getDrugDetailsByDSRNumber(ByVal DSRNumber As String) As DataSet
+        '  Dim months As Date = dtToday.AddMonths(2)
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_Drug where dSRNumber like '%" & DSRNumber & "%'"
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
@@ -291,4 +316,48 @@ Public Class classDAOAccessDB
 
 
     End Function
+
+    Public Function getDrugDetailsByDSRumAndDName(ByVal dSRNumber As String, ByVal dName As String) As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID1 As String = "Select * from table_Drug where dName = '" & dName & "' and  dSRNumber = '" & dSRNumber & "'"
+        Dim dsOID1 As New DataSet
+        Dim daOID1 As New OleDb.OleDbDataAdapter(strSQLOID1, DBcn)
+        daOID1.Fill(dsOID1, strDBNAME)
+        Return dsOID1
+
+    End Function
+
+    Public Function edit_DrugDetailsbyDrugID(ByVal drugID As String, ByVal availAmount As String)
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLU As String = "Select * from table_Drug where dID='" & drugID & "'"
+        Dim dsU As New DataSet
+        Dim daU As New OleDb.OleDbDataAdapter(strSQLU, DBcn)
+        Dim cbU As New OleDb.OleDbCommandBuilder(daU)
+        daU.Fill(dsU, strDBNAME)
+        'Dim intU As Integer
+        With dsU.Tables(strDBNAME)
+            '  For intU = 0 To .Rows.Count - 1
+            .Rows(0).Item("dAvailAmt") = availAmount
+            ' Next
+            daU.Update(dsU, strDBNAME)
+            strSQLU = Nothing
+            daU = Nothing
+            dsU = Nothing
+            cbU = Nothing
+            GC.Collect()
+            Return True
+        End With
+    End Function
+    Public Function getDrugDetailsBySRNumber(ByVal dSRNumber As String) As DataSet
+
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_Drug where dSRNumber = '" & dSRNumber & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID
+
+    End Function
+
 End Class

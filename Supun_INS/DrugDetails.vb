@@ -178,18 +178,33 @@
         o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
         res = DAO.addOder(o1.getOnumber, o1.getoDateOfIsse, o1.getoType, DataGridView1.RowCount - 1)
 
-        Dim DrugID As String
+        If o1.getoType = "REC" Then
+            Dim DrugID As String
 
-        Dim inti As Integer
-        For inti = 0 To DataGridView1.Rows.Count - 2
-            With DataGridView1.Rows(inti)
-                DrugID = GenerateDrugID()
-                DAO.addDrugDetailsPerOrder(DrugID, .Cells(1).Value, .Cells(2).Value, .Cells(3).Value, .Cells(4).Value,
-                                           .Cells(5).Value, .Cells(0).Value)
+            Dim inti As Integer
+            For inti = 0 To DataGridView1.Rows.Count - 2
+                With DataGridView1.Rows(inti)
+                    DrugID = GenerateDrugID()
+                    DAO.addDrugDetailsPerOrder(DrugID, .Cells(1).Value, .Cells(2).Value, .Cells(3).Value, .Cells(4).Value,
+                                               .Cells(5).Value, .Cells(0).Value)
 
-                DAO.addOderDetails("0", o1.getOnumber, DrugID, .Cells(5).Value)
-            End With
-        Next
+                    DAO.addOderDetails("0", o1.getOnumber, DrugID, .Cells(5).Value)
+                End With
+            Next
+        End If
+
+        If o1.getoType = "ISS" Then
+            Dim intC As Integer
+            For intC = 0 To DataGridView1.Rows.Count - 2
+                Dim daDrug = DAO.getDrugDetailsByDSRumAndDName(DataGridView1.Rows(intC).Cells(1).Value, DataGridView1.Rows(intC).Cells(2).Value)
+                msgB.msgOKInf("Going to issue drug" & daDrug.Tables(strDBNAME).Rows(0).Item("dID"))
+                DAO.edit_DrugDetailsbyDrugID(daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(0).Cells(6).Value)
+                DAO.addOderDetails("0", o1.getOnumber, daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(0).Cells(5).Value)
+            Next
+
+            
+        End If
+
         msgB.msgOKInf("Added New order details successfully")
 
         Call clearALL()
@@ -249,11 +264,15 @@
                     If strOType = "REC" Then
                         Me.rdbRecieveDrug.Checked = True
 
+
                     End If
                     If strOType = "ISS" Then
                         Me.rdbIssueDrug.Checked = True
 
+
+
                     End If
+
                     Dim daA2 = DAO.getOrderDataByOrderID(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
                     Dim daOdetails As DataSet
                     Dim drugId As String
@@ -270,7 +289,7 @@
                         End With
                     Next
                     Exit Sub
-                    Exit Sub
+
                 Else
                     Call clearALL()
                     Exit Sub
@@ -340,10 +359,10 @@
                 msgB.msgOKInf(res)
                 Exit Sub
             End If
-            If o1.getoType = "REC" Then
-                Me.txtStockLabel.Focus()
-                Exit Sub
-            End If
+            'If o1.getoType = "REC" Then
+            '    Me.txtStockLabel.Focus()
+            '    Exit Sub
+            'End If
             d1.setdName(Me.txtDrugName.Text)
             If IsNothing(d1.getdName) = False Then
 
@@ -354,12 +373,15 @@
 
                     string_drugname = Me.txtDrugName.Text
                     Dim popUpDrug As New frmDrugPopUp
+                    frm_DrubPopUPStatus = "BYNAME"
+                    string_drugname = Me.txtSRNumber.Text
                     popUpDrug.ShowDialog()
 
                     '' we just load the drug name with the details
                 ElseIf dsA.Tables(strDBNAME).Rows.Count = 1 Then
                     With dsA.Tables(strDBNAME).Rows(0)
                         Me.txtSRNumber.Text = .Item("dSRNumber")
+                        Me.txtDrugName.Text = .Item("dName")
                         Me.dtManDate.Value = .Item("dManDate")
                         Me.dtDOExpiry.Value = .Item("dExpDate")
                         Me.txtStockLabel.Text = .Item("dLabel")
@@ -388,13 +410,89 @@
     Private Function GenerateDrugID() As String
         Dim value As String = ""
 
-        value = Now.Year & Now.Month & Now.Day & Now.Hour & Now.Minute & Now.Second
-        msgB.msgOKInf(value)
+        value = Now.Year & Now.Month & Now.Day & Now.Hour & Now.Minute & Now.Second & Now.Millisecond
+
+        ' msgB.msgOKInf(value)
         Return value
 
     End Function
 
-    Private Sub txtOrderNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOrderNumber.TextChanged
+
+    Private Sub txtSRNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtSRNumber.KeyPress
+        If e.KeyChar = ChrW(Keys.Enter) Then
+            d1.setDSRnumber(Me.txtSRNumber.Text)
+            Dim dsD = DAO.getDrugDetailsBySRNumber(d1.getDSRnumber)
+            '  msgB.msgOKInf(dsD.Tables(strDBNAME).Rows.Count)
+            If dsD.Tables(strDBNAME).Rows.Count <> 1 And dsD.Tables(strDBNAME).Rows.Count > 0 Then
+
+                If o1.getoType = "REC" Then
+                    Dim res As Boolean = msgB.msgYesNoQuestion("Drug with SRNumer -" & Me.txtSRNumber.Text & " is already exists." & vbCrLf & "Do you wish to load exiting data (YES) or Add new data (NO) ")
+                    If res = True Then
+                        Dim popUpDrug As New frmDrugPopUp
+                        frm_DrubPopUPStatus = "BYDSRNUMBER"
+                        string_drugname = Me.txtSRNumber.Text
+
+                        popUpDrug.ShowDialog()
+                        Exit Sub
+                    End If
+                Else
+                    Me.txtDrugName.Clear()
+                    Me.txtRecAmount.Clear()
+                    Me.txtStockLabel.Clear()
+                    Me.txtTotStock.Text = "0"
+
+
+                    Exit Sub
+                End If
+                
+
+            ElseIf dsD.Tables(strDBNAME).Rows.Count >= 1 Then
+                If o1.getoType = "REC" Then
+                    Dim res As Boolean = msgB.msgYesNoQuestion("Drug with SRNumer -" & Me.txtSRNumber.Text & " is already exists." & vbCrLf & "Do you wish to load exiting data (YES) or Add new data (NO) ")
+                    If res = True Then
+                        With dsD.Tables(strDBNAME).Rows(0)
+                            Me.txtSRNumber.Text = .Item("dSRNumber")
+                            Me.txtDrugName.Text = .Item("dName")
+                            Me.dtManDate.Value = .Item("dManDate")
+                            Me.dtDOExpiry.Value = .Item("dExpDate")
+                            Me.txtStockLabel.Text = .Item("dLabel")
+                            Me.txtTotStock.Text = .Item("dAvailAmt")
+                            Exit Sub
+                        End With
+                    Else
+                        Exit Sub
+                    End If
+                End If
+                With dsD.Tables(strDBNAME).Rows(0)
+                    Me.txtSRNumber.Text = .Item("dSRNumber")
+                    Me.txtDrugName.Text = .Item("dName")
+                    Me.dtManDate.Value = .Item("dManDate")
+                    Me.dtDOExpiry.Value = .Item("dExpDate")
+                    Me.txtStockLabel.Text = .Item("dLabel")
+                    Me.txtTotStock.Text = .Item("dAvailAmt")
+
+                End With
+
+            Else
+                msgB.msgOKInf("Drug Not available in stocks. Try with DSR number...! ")
+                Exit Sub
+
+            End If
+
+
+
+        End If
+    End Sub
+
+    Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
+
+    End Sub
+
+    Private Sub txtSRNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSRNumber.TextChanged
+
+    End Sub
+
+    Private Sub txtRecAmount_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRecAmount.TextChanged
 
     End Sub
 End Class

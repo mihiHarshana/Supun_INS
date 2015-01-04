@@ -365,9 +365,29 @@ Public Class classDAOAccessDB
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
-
         Return dsOID
-
     End Function
 
+    Public Function getAllOrderDetails() As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        'Dim strSQLOID As String = "Select table_Order.OrderNo , table_order.OrderDate , table_order.OrderType, table_OrderDetails.DrugId, table_OrderDetails.OrderAmount  from table_Order INNER JOIN table_OrderDetails ON table_Order.OrderNo = table_OrderDetails.OrderNo"
+        'Dim strSQLOID As String = "Select table_Order.OrderNo , table_order.OrderDate , table_order.OrderType, table_OrderDetails.DrugId, table_OrderDetails.OrderAmount  from table_Order LEFT JOIN table_OrderDetails ON table_Order.OrderNo = table_OrderDetails.OrderNo"
+
+        Dim strSQLOID As String = "Select table_OrderDetails.OrderNo, table_OrderDetails.DrugId, table_OrderDetails.OrderAmount,table_Order.OrderDate, table_order.OrderType from  table_OrderDetails INNER JOIN table_Order ON table_OrderDetails.OrderNo = table_Order.OrderNo"
+
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+        Return dsOID
+    End Function
+
+    Public Function getDrugNameByDrugID(ByVal drugID As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_Drug where dID = '" & drugID & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+        Return dsOID.Tables(strDBNAME).Rows(0).Item("dname")
+
+    End Function
 End Class

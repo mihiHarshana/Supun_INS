@@ -150,4 +150,10 @@ Public Class MDIParent1
         Close()
 
     End Sub
+
+    Private Sub OrdersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdersToolStripMenuItem.Click
+        Dim frm_orderDetails As New frmOrderDetails
+        frm_orderDetails.Show()
+
+    End Sub
 End Class

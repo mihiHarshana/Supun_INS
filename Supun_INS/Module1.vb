@@ -19,4 +19,7 @@
 
     Public frm_drugDetails As DrugDetails
     Public frm_DrubPopUPStatus As String = ""
+
+
+    Public d1 As New Drugs
 End Module

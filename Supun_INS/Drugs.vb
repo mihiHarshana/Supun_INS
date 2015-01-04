@@ -8,7 +8,17 @@
     Private dRecieved As Double
     Private dLabel As String
     Private dTot As Double
+    Private dId As String
     Public ErrorMsg As String = ""
+
+    Public Function setDID(ByVal value As String) As String
+        dId = value
+        Return STROK
+    End Function
+
+    Public Function getDID() As String
+        Return dId
+    End Function
 
 
     Public Function setDSRnumber(ByVal value As String) As String

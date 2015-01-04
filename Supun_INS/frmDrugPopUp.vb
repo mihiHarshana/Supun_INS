@@ -1,5 +1,5 @@
 ﻿Public Class frmDrugPopUp
- 
+
 
     Private Sub frmDrugPopUp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -15,39 +15,11 @@
             .Columns(3).Name = "Manufacture Date"
             .Columns(4).Name = "Expirary Date"
             .Columns(5).Name = "Amount"
-            .Columns(6).Name = "Total Stock"
+
+            .Columns(6).Name = "did"
         End With
-
-        'If frm_DrubPopUPStatus = "BYNAME" Then
         Me.txtDrugName.Text = string_drugname
-        '    Dim dsRDD As DataSet
 
-        '    dsRDD = DAO.getDrugDetails(string_drugname)
-
-        '    Dim intI As Integer
-        '    For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
-        '        With dsRDD.Tables(strDBNAME).Rows(intI)
-        '            DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
-        '        End With
-        '    Next
-        '    Exit Sub
-
-        'ElseIf frm_DrubPopUPStatus = "BYDSRNUMBER" Then
-        '    Me.txtDrugName.Text = string_drugname
-
-        '    Dim dsRDD As DataSet
-
-        '    dsRDD = DAO.getDrugDetailsByDSRNumber(string_drugname)
-
-        '    Dim intI As Integer
-        '    For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
-        '        '   msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
-        '        With dsRDD.Tables(strDBNAME).Rows(intI)
-        '            DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
-        '        End With
-        '    Next
-        '    Exit Sub
-        '    End If
     End Sub
 
 
@@ -64,7 +36,7 @@
                 frm_drugDetails.dtManDate.Value = .Item(3).Value
                 frm_drugDetails.dtDOExpiry.Value = .Item(4).Value
                 frm_drugDetails.txtTotStock.Text = .Item(5).Value
-
+                d1.setDID(.Item(6).Value)
 
                 Me.Close()
             Catch ex As Exception
@@ -95,7 +67,7 @@
                 Dim intI As Integer
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     With dsRDD.Tables(strDBNAME).Rows(intI)
-                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
+                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                 Next
             End If
@@ -114,7 +86,7 @@
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
                     With dsRDD.Tables(strDBNAME).Rows(intI)
-                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
+                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                 Next
 
@@ -133,7 +105,7 @@
         For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
             ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
             With dsRDD.Tables(strDBNAME).Rows(intI)
-                DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
+                DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
             End With
         Next
 
@@ -157,7 +129,7 @@
                 Dim intI As Integer
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     With dsRDD.Tables(strDBNAME).Rows(intI)
-                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
+                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                 Next
             End If
@@ -176,7 +148,7 @@
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
                     With dsRDD.Tables(strDBNAME).Rows(intI)
-                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"))
+                        DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                 Next
 
@@ -184,7 +156,7 @@
         End If
     End Sub
 
-  
+
     Private Sub txtSrNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
 
     End Sub

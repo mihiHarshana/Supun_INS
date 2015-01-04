@@ -327,6 +327,16 @@ Public Class classDAOAccessDB
 
     End Function
 
+    Public Function getDrugDetailsByDID(ByVal DID As String) As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID1 As String = "Select * from table_Drug where DID = '" & DID & "'"
+        Dim dsOID1 As New DataSet
+        Dim daOID1 As New OleDb.OleDbDataAdapter(strSQLOID1, DBcn)
+        daOID1.Fill(dsOID1, strDBNAME)
+        Return dsOID1
+
+    End Function
+
     Public Function edit_DrugDetailsbyDrugID(ByVal drugID As String, ByVal availAmount As String)
         DBConnection.getAccessDBConnection(strDBNAME)
         Dim strSQLU As String = "Select * from table_Drug where dID='" & drugID & "'"

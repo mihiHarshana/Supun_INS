@@ -36,3 +36,4 @@ C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.3149.tlog
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.3150.tlog
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.AboutBox1.resources
+C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderDetails.resources

@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Supun_INS")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("Microsoft")> 
+<Assembly: AssemblyDescription("Inventory Control System V1.1")> 
+<Assembly: AssemblyCompany("MhSoftSolutions")> 
 <Assembly: AssemblyProduct("Supun_INS")> 
-<Assembly: AssemblyCopyright("Copyright © Microsoft 2014")> 
+<Assembly: AssemblyCopyright("Copyright © MhSoftSolutions")> 
 <Assembly: AssemblyTrademark("")> 
 
 <Assembly: ComVisible(False)>

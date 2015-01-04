@@ -63,9 +63,6 @@
         If manDate > value Then
             Return "Check the drug manfacture date and expire date are propserly entered"
         End If
-        'If value >= Now.Date Then
-        '    Return "Drug is already expried. Cannot contnue issueing this drug"
-        'End If
         dExpDate = value
         Return STROK
     End Function

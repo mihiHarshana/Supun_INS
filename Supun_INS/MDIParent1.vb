@@ -90,6 +90,18 @@ Public Class MDIParent1
 
     End Sub
 
+    Private Sub MDIParent1_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Dim res As Boolean
+        res = msgB.msgYesNoQuestion("Are you sure you want to Exit ")
+        If res = True Then
+            End
+        Else
+            e.Cancel = True
+
+        End If
+
+    End Sub
+
     Private Sub MDIParent1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         DataGridView1.Columns.Clear()
         DataGridView1.ColumnCount = 6
@@ -115,6 +127,27 @@ Public Class MDIParent1
    
 
         Next
+
+    End Sub
+
+    Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
+        Dim druglist As New frmDrugPopUp
+        druglist.Show()
+
+    End Sub
+
+    Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
+        Dim frm_aboutBox As New AboutBox1
+        frm_aboutBox.Show()
+
+    End Sub
+
+    Private Sub MDIParent1_LostFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.LostFocus
+
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        Close()
 
     End Sub
 End Class

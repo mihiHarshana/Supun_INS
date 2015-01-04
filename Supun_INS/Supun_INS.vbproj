@@ -48,6 +48,9 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +81,12 @@
     <Compile Include="About.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AboutBox1.Designer.vb">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AboutBox1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="classDAOAccessDB.vb" />
     <Compile Include="ClassDBConnection.vb" />
     <Compile Include="classLogError.vb" />
@@ -91,6 +100,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Drugs.vb" />
+    <Compile Include="frmDrugInventory.Designer.vb">
+      <DependentUpon>frmDrugInventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDrugInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDrugPopUp.Designer.vb">
       <DependentUpon>frmDrugPopUp.vb</DependentUpon>
     </Compile>
@@ -131,8 +146,14 @@
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AboutBox1.resx">
+      <DependentUpon>AboutBox1.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DrugDetails.resx">
       <DependentUpon>DrugDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDrugInventory.resx">
+      <DependentUpon>frmDrugInventory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDrugPopUp.resx">
       <DependentUpon>frmDrugPopUp.vb</DependentUpon>
@@ -151,6 +172,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

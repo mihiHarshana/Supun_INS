@@ -2,7 +2,7 @@
     Public strDBNAME As String = "INS"
     Public DBcn As New OleDb.OleDbConnection
 
-    Public STRTITLE As String
+    Public STRTITLE As String = "Message"
 
     Public msgB As New classMessages
     Public LogError As New classLogError

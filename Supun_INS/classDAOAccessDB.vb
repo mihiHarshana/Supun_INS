@@ -164,9 +164,9 @@ Public Class classDAOAccessDB
 
 
     Public Function getDrugsExpireInThreeMonths(ByVal dtToday As Date) As DataSet
-        Dim months As Date = dtToday.AddMonths(3)
+        Dim months As Date = dtToday.AddMonths(2)
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_Drug where dExpDate between '" & months & "' and '" & dtToday & "'"
+        Dim strSQLOID As String = "Select * from table_Drug where dExpDate >= '" & months & " ' and dExpDate > '" & dtToday & "' "
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)

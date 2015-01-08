@@ -61,6 +61,9 @@
         o1.setoType("REC")
         strRDBText = "Recieve"
         Me.txtOrderNo1.Text = GenerateOrderNo()
+        Me.txtOrderNumber.Clear()
+        Me.txtOrderNumber.Focus()
+
     End Sub
 
     Private Sub rdbIssueDrug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbIssueDrug.CheckedChanged
@@ -71,6 +74,8 @@
         o1.setoType("ISS")
         strRDBText = "Issue"
         Me.txtOrderNo1.Text = GenerateOrderNo()
+        Me.txtOrderNumber.Clear()
+        Me.txtOrderNumber.Focus()
     End Sub
 
     Private Sub DrugDetails_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

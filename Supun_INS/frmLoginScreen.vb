@@ -31,34 +31,8 @@ Public Class frmLoginScreen
 
         Me.txtUserName.Text = "Admin"
         Me.txtPassword.Text = "Admin"
+        Me.Text = strVersion
 
-        'Try
-        '    Dim dsR As DataSet
-        '    dsR = DAO.getLDetails1()
-        '    If dsR.Tables(strDBNAME).Rows.Count = 1 Then
-        '        With dsR.Tables(strDBNAME).Rows(0)
-
-        '            If .Item("Lend") < Now Then
-        '                msgB.msgOKCri("Serious Error" & vbCrLf & "Contact mhsoftsolutions@gmail.com for assistance")
-        '                End
-        '            ElseIf .Item("LCurrent") > Now Then
-        '                msgB.msgOKCri("Serious Error" & vbCrLf & "Contact mhsoftsolutions@gmail.com for assistance")
-        '                End
-        '            Else
-
-        '                DAO.setUpdateLDetails(Now, True)
-        '            End If
-        '        End With
-        '    Else
-        '        msgB.msgOKCritical("Serious Error" & vbCrLf & "Contact mhsoftsolutions@gmail.com for assistance")
-        '        End
-
-        '    End If
-        '    Me.txtUserName.Text = "Mihindu"
-        '    Me.txtPassword.Text = "Mihindu"
-        'Catch ex As Exception
-        '    msgB.msgOKInfor(ex.Message)
-        'End Try
     End Sub
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click

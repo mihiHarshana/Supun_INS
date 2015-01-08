@@ -33,11 +33,21 @@
                 ' msgB.msgOKInf("on the click this happend " & .Item(0).Value.ToString)
                 frm_drugDetails.txtSRNumber.Text = .Item(1).Value
                 frm_drugDetails.txtDrugName.Text = .Item(2).Value
-                frm_drugDetails.dtManDate.Value = .Item(3).Value
-                frm_drugDetails.dtDOExpiry.Value = .Item(4).Value
-                frm_drugDetails.txtTotStock.Text = .Item(5).Value
-                d1.setDID(.Item(6).Value)
 
+                If o1.getoType = "REC" Then
+   
+                    frm_drugDetails.txtTotStock.Text = 0
+                    frm_drugDetails.dtManDate.Value = Now.Date
+                    frm_drugDetails.dtDOExpiry.Value = Now.Date
+                Else
+                    frm_drugDetails.dtManDate.Value = .Item(3).Value
+                    frm_drugDetails.dtDOExpiry.Value = .Item(4).Value
+                    frm_drugDetails.txtTotStock.Text = .Item(5).Value
+                End If
+          
+
+                d1.setDID(.Item(6).Value)
+                frm_DrubPopUPStatus = ""
                 Me.Close()
             Catch ex As Exception
                 msgB.msgOKCri(ex.Message)

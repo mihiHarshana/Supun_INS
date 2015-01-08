@@ -115,19 +115,16 @@ Public Class MDIParent1
             .Columns(5).Name = "Store Location"
         End With
 
-
-        Dim dsD = DAO.getDrugsExpireInThreeMonths(Now.Date)
-        Dim intI As Integer
-        For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
-            With DataGridView1.Rows
-                DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
-                dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
-                dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
-            End With
-   
-
-        Next
-
+        Call LoadDataGridData()
+        'Dim dsD = DAO.getDrugsExpireInThreeMonths(Now.Date)
+        'Dim intI As Integer
+        'For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
+        '    With DataGridView1.Rows
+        '        DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
+        '        dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
+        '        dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
+        '    End With
+        'Next
     End Sub
 
     Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
@@ -155,5 +152,19 @@ Public Class MDIParent1
         Dim frm_orderDetails As New frmOrderDetails
         frm_orderDetails.Show()
 
+    End Sub
+
+    Public Sub LoadDataGridData()
+        DataGridView1.Rows.Clear()
+
+        Dim dsD = DAO.getDrugsExpireInThreeMonths(Now.Date)
+        Dim intI As Integer
+        For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
+            With DataGridView1.Rows
+                DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
+                dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
+                dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
+            End With
+        Next
     End Sub
 End Class

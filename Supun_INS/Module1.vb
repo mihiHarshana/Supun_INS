@@ -22,4 +22,5 @@
 
 
     Public d1 As New Drugs
+    Public o1 As New Order
 End Module

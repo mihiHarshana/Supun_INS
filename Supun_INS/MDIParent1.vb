@@ -121,6 +121,7 @@ Public Class MDIParent1
 
     Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
         Dim druglist As New frmDrugPopUp
+        blnDrugPopUpFromMenu = True
         druglist.Show()
 
     End Sub

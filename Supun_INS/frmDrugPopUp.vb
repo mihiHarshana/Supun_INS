@@ -17,6 +17,8 @@
             .Columns(5).Name = "Amount"
 
             .Columns(6).Name = "did"
+            .Columns(6).Visible = False
+
         End With
         Me.txtDrugName.Text = string_drugname
 
@@ -28,27 +30,32 @@
         With DataGridView1.SelectedCells
 
             Try
-                'msgB.msgOKInf(.Item(0).Value.ToString)
-                frm_drugDetails.txtStockLabel.Text = .Item(0).Value
-                ' msgB.msgOKInf("on the click this happend " & .Item(0).Value.ToString)
-                frm_drugDetails.txtSRNumber.Text = .Item(1).Value
-                frm_drugDetails.txtDrugName.Text = .Item(2).Value
 
-                If o1.getoType = "REC" Then
-   
-                    frm_drugDetails.txtTotStock.Text = 0
-                    frm_drugDetails.dtManDate.Value = Now.Date
-                    frm_drugDetails.dtDOExpiry.Value = Now.Date
-                Else
-                    frm_drugDetails.dtManDate.Value = .Item(3).Value
-                    frm_drugDetails.dtDOExpiry.Value = .Item(4).Value
-                    frm_drugDetails.txtTotStock.Text = .Item(5).Value
+                If blnDrugPopUpFromMenu = False Then
+                    'msgB.msgOKInf(.Item(0).Value.ToString)
+                    frm_drugDetails.txtStockLabel.Text = .Item(0).Value
+                    ' msgB.msgOKInf("on the click this happend " & .Item(0).Value.ToString)
+                    frm_drugDetails.txtSRNumber.Text = .Item(1).Value
+                    frm_drugDetails.txtDrugName.Text = .Item(2).Value
+
+                    If o1.getoType = "REC" Then
+
+                        frm_drugDetails.txtTotStock.Text = 0
+                        frm_drugDetails.dtManDate.Value = Now.Date
+                        frm_drugDetails.dtDOExpiry.Value = Now.Date
+                    Else
+                        frm_drugDetails.dtManDate.Value = .Item(3).Value
+                        frm_drugDetails.dtDOExpiry.Value = .Item(4).Value
+                        frm_drugDetails.txtTotStock.Text = .Item(5).Value
+                    End If
+
+
+                    d1.setDID(.Item(6).Value)
+                    frm_DrubPopUPStatus = ""
+                    Me.Close()
                 End If
-          
 
-                d1.setDID(.Item(6).Value)
-                frm_DrubPopUPStatus = ""
-                Me.Close()
+                
             Catch ex As Exception
                 msgB.msgOKCri(ex.Message)
             End Try

@@ -160,4 +160,10 @@ Public Class MDIParent1
             End With
         Next
     End Sub
+
+    Private Sub TotalPerSRNoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TotalPerSRNoToolStripMenuItem.Click
+        Dim frm_OderBySRNumber As New frmOrderBySRNumber
+        frm_OderBySRNumber.Show()
+
+    End Sub
 End Class

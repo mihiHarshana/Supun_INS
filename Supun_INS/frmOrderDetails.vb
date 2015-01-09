@@ -24,8 +24,9 @@
             End With
         Next
         Dim intI1 As Integer
+        Dim strValue As String
         For intI1 = 0 To DataGridView1.Rows.Count
-            Dim strValue As String
+
             strValue = DAO.getDrugNameByDrugID(DataGridView1.Rows(intI1).Cells("drugId").Value)
             DataGridView1.Rows(intI1).Cells("drugID").Value = strValue
         Next

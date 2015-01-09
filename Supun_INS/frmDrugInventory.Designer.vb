@@ -101,6 +101,7 @@ Partial Class frmDrugInventory
         Me.Controls.Add(Me.txtDrugName)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmDrugInventory"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "frmDrugInventory"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

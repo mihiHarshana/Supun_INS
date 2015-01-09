@@ -389,4 +389,26 @@ Public Class classDAOAccessDB
         Return dsOID.Tables(strDBNAME).Rows(0).Item("dname")
 
     End Function
+
+
+    Public Function getTotalPerSRNumber() As DataSet
+
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "SELECT  dSRNumber, sum(dAvailAmt) as tot   from table_Drug    Group BY DSRNumber"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID
+    End Function
+
+    Public Function getDrugNameBySRNumber(ByVal DsrNumber As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "SELECT  dName   from table_Drug    where  dsRNumber='" & DsrNumber & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+
+        Return dsOID.Tables(strDBNAME).Rows(0).Item("dname").ToString
+    End Function
 End Class

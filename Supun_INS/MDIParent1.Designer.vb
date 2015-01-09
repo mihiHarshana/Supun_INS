@@ -27,12 +27,13 @@ Partial Class MDIParent1
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InventoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DrugListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TotalPerSRNoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -48,7 +49,7 @@ Partial Class MDIParent1
         '
         'FileToolStripMenuItem
         '
-        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryToolStripMenuItem, Me.DrugListToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.InventoryToolStripMenuItem, Me.DrugListToolStripMenuItem, Me.OrdersToolStripMenuItem, Me.TotalPerSRNoToolStripMenuItem, Me.ExitToolStripMenuItem})
         Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
         Me.FileToolStripMenuItem.Size = New System.Drawing.Size(37, 20)
         Me.FileToolStripMenuItem.Text = "File"
@@ -56,19 +57,31 @@ Partial Class MDIParent1
         'InventoryToolStripMenuItem
         '
         Me.InventoryToolStripMenuItem.Name = "InventoryToolStripMenuItem"
-        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.InventoryToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.InventoryToolStripMenuItem.Text = "Inventory"
         '
         'DrugListToolStripMenuItem
         '
         Me.DrugListToolStripMenuItem.Name = "DrugListToolStripMenuItem"
-        Me.DrugListToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.DrugListToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.DrugListToolStripMenuItem.Text = "Drug List"
+        '
+        'OrdersToolStripMenuItem
+        '
+        Me.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem"
+        Me.OrdersToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.OrdersToolStripMenuItem.Text = "Orders"
+        '
+        'TotalPerSRNoToolStripMenuItem
+        '
+        Me.TotalPerSRNoToolStripMenuItem.Name = "TotalPerSRNoToolStripMenuItem"
+        Me.TotalPerSRNoToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.TotalPerSRNoToolStripMenuItem.Text = "Total per SR No"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'HelpToolStripMenuItem
@@ -102,12 +115,6 @@ Partial Class MDIParent1
         Me.Label1.TabIndex = 10
         Me.Label1.Text = "Drugs Expire with in 3 months"
         '
-        'OrdersToolStripMenuItem
-        '
-        Me.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem"
-        Me.OrdersToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.OrdersToolStripMenuItem.Text = "Orders"
-        '
         'MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -138,5 +145,6 @@ Partial Class MDIParent1
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AboutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OrdersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TotalPerSRNoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

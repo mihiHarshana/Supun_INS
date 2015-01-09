@@ -16,3 +16,4 @@ C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.exe
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.xml
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.pdb
+C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderBySRNumber.resources

@@ -23,7 +23,7 @@
 
     Public d1 As New Drugs
     Public o1 As New Order
-    Public Const strVersion As String = "V1.1 Build 08012015_2252"
+    Public Const strVersion As String = "V1.2 Build 09012015_2236"
 
     Public blnDrugPopUpFromMenu As Boolean = False
 End Module

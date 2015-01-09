@@ -29,8 +29,8 @@ Public Class frmLoginScreen
     Private Sub frmLoginScreen_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         Me.txtUserName.Focus()
 
-        Me.txtUserName.Text = "Admin"
-        Me.txtPassword.Text = "Admin"
+        'Me.txtUserName.Text = "Admin"
+        'Me.txtPassword.Text = "Admin"
         Me.Text = strVersion
 
     End Sub

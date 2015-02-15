@@ -1,5 +1,10 @@
 ﻿Public Class frmDrugPopUp
 
+    Private Sub frmDrugPopUp_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
+        Me.txtDrugName.Clear()
+
+    End Sub
+
 
     Private Sub frmDrugPopUp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
@@ -55,7 +60,7 @@
                     Me.Close()
                 End If
 
-                
+
             Catch ex As Exception
                 msgB.msgOKCri(ex.Message)
             End Try
@@ -86,6 +91,9 @@
                     With dsRDD.Tables(strDBNAME).Rows(intI)
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
+
+                    dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+
                 Next
             End If
 
@@ -105,6 +113,8 @@
                     With dsRDD.Tables(strDBNAME).Rows(intI)
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
+
+                    dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
                 Next
 
             End If
@@ -123,7 +133,9 @@
             ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
             With dsRDD.Tables(strDBNAME).Rows(intI)
                 DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
+
             End With
+            dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
         Next
 
 
@@ -148,6 +160,7 @@
                     With dsRDD.Tables(strDBNAME).Rows(intI)
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
+                    dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
                 Next
             End If
 
@@ -167,14 +180,11 @@
                     With dsRDD.Tables(strDBNAME).Rows(intI)
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
+                    dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
                 Next
 
             End If
         End If
     End Sub
 
-
-    Private Sub txtSrNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs)
-
-    End Sub
 End Class

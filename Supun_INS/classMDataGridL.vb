@@ -30,7 +30,8 @@ Public Class classMDataGridL
 
     Public Sub DataGrid1_rowcolors(ByVal dsD As DataSet, ByVal DT As DataGridView)
         Dim intI As Integer
-        For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
+        ' If DT > 1 Then
+        For intI = 0 To DT.Rows.Count - 1
             If (intI Mod 2) = 0 Then
                 DT.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
             End If
@@ -45,6 +46,8 @@ Public Class classMDataGridL
             '    'MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
             'End If
         Next
+        '   End If
+
     End Sub
 
     'Public Sub dataGrid2_RowColors(ByVal rcount As Integer)

@@ -150,20 +150,29 @@ Public Class MDIParent1
     Public Sub LoadDataGridData()
         DataGridView1.Rows.Clear()
 
-        Dim dsD = DAO.getDrugsExpireInThreeMonths(Now.Date)
-        Dim intI As Integer
-        For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
-            With DataGridView1.Rows
-                DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
-                dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
-                dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
-            End With
-        Next
+        Dim dsD = DAO.getDrugsExpireInThreeMonths()
+
+        Try
+            Dim intI As Integer
+            For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
+                With DataGridView1.Rows
+                    DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
+                    dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
+                    dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
+                End With
+            Next
+        Catch ex As Exception
+            msgB.msgOKInf(ex.ToString)
+        End Try
     End Sub
 
     Private Sub TotalPerSRNoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TotalPerSRNoToolStripMenuItem.Click
         Dim frm_OderBySRNumber As New frmOrderBySRNumber
         frm_OderBySRNumber.Show()
+
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 
     End Sub
 End Class

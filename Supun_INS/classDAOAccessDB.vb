@@ -77,24 +77,7 @@ Public Class classDAOAccessDB
         daA.Update(dsA, strDBNAME)
         Return "Added"
     End Function
-    ''' <summary>
-    ''' GEt Drug Table count
-    ''' </summary>
-    ''' <returns></returns>
-    ''' <remarks></remarks>
 
-
-    'Public Function getDrugTableCount() As Integer
-    '    DBConnection.getAccessDBConnection(strDBNAME)
-    '    Dim strSQLC As String = "Select  *  from table_Drug "
-    '    Dim dsC As New DataSet
-    '    Dim daC As New OleDb.OleDbDataAdapter(strSQLC, DBcn)
-    '    daC.Fill(dsC, strDBNAME)
-
-    '    Dim rc As Integer = dsC.Tables(strDBNAME).Rows.Count
-
-    '    Return rc
-    'End Function
 
     ''' <summary>
     ''' Get order table count
@@ -163,15 +146,20 @@ Public Class classDAOAccessDB
     End Function
 
 
-    Public Function getDrugsExpireInThreeMonths(ByVal dtToday As Date) As DataSet
-        Dim months As Date = dtToday.AddMonths(2)
-        DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "Select * from table_Drug where dExpDate >= '" & months & " ' and dExpDate > '" & dtToday & "' "
-        Dim dsOID As New DataSet
-        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
-        daOID.Fill(dsOID, strDBNAME)
+    Public Function getDrugsExpireInThreeMonths() As DataSet
+        Try
+            '  Dim months As Date = dtToday.AddMonths(2)
+            DBConnection.getAccessDBConnection(strDBNAME)
+            Dim strSQLOID As String = "Select * from table_Drug where dExpDate >= '" & Now.Date & "' and dExpDate > '" & Now.Date & "' "
+            Dim dsOID As New DataSet
+            Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+            daOID.Fill(dsOID, strDBNAME)
+            msgB.msgOKInf("Hello " & dsOID.Tables(strDBNAME).Rows.Count)
+            Return dsOID
+        Catch ex As Exception
+            msgB.msgOKInf(ex.Message)
 
-        Return dsOID
+        End Try
 
     End Function
 

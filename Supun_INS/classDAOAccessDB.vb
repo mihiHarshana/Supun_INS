@@ -154,7 +154,7 @@ Public Class classDAOAccessDB
             Dim dsOID As New DataSet
             Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
             daOID.Fill(dsOID, strDBNAME)
-            msgB.msgOKInf("Hello " & dsOID.Tables(strDBNAME).Rows.Count)
+            ' msgB.msgOKInf("Hello " & dsOID.Tables(strDBNAME).Rows.Count)
             Return dsOID
         Catch ex As Exception
             msgB.msgOKInf(ex.Message)

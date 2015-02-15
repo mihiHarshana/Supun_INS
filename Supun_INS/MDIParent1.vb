@@ -161,6 +161,9 @@ Public Class MDIParent1
                     dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
                 End With
             Next
+
+            dtColor.DataGrid1_rowcolors(dsD)
+
         Catch ex As Exception
             msgB.msgOKInf(ex.ToString)
         End Try

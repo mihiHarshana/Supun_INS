@@ -145,7 +145,6 @@ Public Class classDAOAccessDB
 
     End Function
 
-
     Public Function getDrugsExpireInThreeMonths() As DataSet
         Try
             '  Dim months As Date = dtToday.AddMonths(2)
@@ -160,7 +159,6 @@ Public Class classDAOAccessDB
             msgB.msgOKInf(ex.Message)
 
         End Try
-
     End Function
 
     Public Function getDrugDetails(ByVal drugName As String) As DataSet

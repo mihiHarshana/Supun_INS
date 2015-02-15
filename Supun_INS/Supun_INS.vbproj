@@ -90,6 +90,7 @@
     <Compile Include="classDAOAccessDB.vb" />
     <Compile Include="ClassDBConnection.vb" />
     <Compile Include="classLogError.vb" />
+    <Compile Include="classMDataGridL.vb" />
     <Compile Include="classMessages.vb" />
     <Compile Include="classReadWriteTextFile.vb" />
     <Compile Include="ClassUsers.vb" />

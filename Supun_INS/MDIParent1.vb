@@ -159,6 +159,10 @@ Public Class MDIParent1
                     DataGridView1.Rows.Add(dsD.Tables(strDBNAME).Rows(intI).Item("dSRNumber"), dsD.Tables(strDBNAME).Rows(intI).Item("dName"),
                     dsD.Tables(strDBNAME).Rows(intI).Item("dManDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate"), dsD.Tables(strDBNAME).Rows(intI).Item("dAvailAmt"),
                     dsD.Tables(strDBNAME).Rows(intI).Item("dLabel"))
+
+                    If dsD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                        DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+                    End If
                 End With
             Next
 

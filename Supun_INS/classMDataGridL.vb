@@ -28,6 +28,25 @@ Public Class classMDataGridL
         Next
     End Sub
 
+    Public Sub DataGrid1_rowcolors(ByVal dsD As DataSet, ByVal DT As DataGridView)
+        Dim intI As Integer
+        For intI = 0 To dsD.Tables(strDBNAME).Rows.Count - 1
+            If (intI Mod 2) = 0 Then
+                DT.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
+            End If
+            'If MDIParent1.DataGridView1.Rows(intI).Cells("TRTYPE").Value = strINVALIDIN Then
+            '    MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.Red
+            '    ' Else
+            '    'MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
+            'End If
+            'If MDIParent1.DataGridView1.Rows(intI).Cells("TRIN").Value = True Then
+            '    MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.Green
+            '    ' Else
+            '    'MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
+            'End If
+        Next
+    End Sub
+
     'Public Sub dataGrid2_RowColors(ByVal rcount As Integer)
     '    For rcount = 0 To rcount - 1
     '        If (rcount Mod 2) = 0 Then

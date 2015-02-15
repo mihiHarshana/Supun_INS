@@ -25,7 +25,12 @@
 
                     strValue = DAO.getDrugNameBySRNumber(DataGridView1.Rows(intI1).Cells(0).Value)
                     DataGridView1.Rows(intI1).Cells("DrugName").Value = strValue
+                    Me.lblReportGenDate.Text = "Report Generated Date : " & Date.Now
+
                 Next
+
+                dtColor.DataGrid1_rowcolors(dsRA, Me.DataGridView1)
+
             Catch ex As Exception
                 msgB.msgOKInf(ex.Message)
             End Try

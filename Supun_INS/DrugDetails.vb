@@ -40,6 +40,7 @@
 
         End With
 
+        Me.lblExpiredMsg.Visible = False
         Me.txtDrugName.Clear()
         Me.txtRecAmount.Clear()
         Me.txtSRNumber.Clear()
@@ -498,5 +499,15 @@
 
     Private Sub txtSRNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSRNumber.TextChanged
 
+    End Sub
+
+    Private Sub dtDOExpiry_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtDOExpiry.ValueChanged
+        If Me.rdbIssueDrug.Checked = True Then
+            If dtDOExpiry.Value <= Now.Date Then
+                Me.lblExpiredMsg.Visible = True
+            Else
+                Me.lblExpiredMsg.Visible = False
+            End If
+        End If
     End Sub
 End Class

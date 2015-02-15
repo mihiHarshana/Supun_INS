@@ -50,6 +50,7 @@ Partial Class DrugDetails
         Me.txtStockLabel = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.txtOrderNo1 = New System.Windows.Forms.TextBox()
+        Me.lblExpiredMsg = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -86,9 +87,9 @@ Partial Class DrugDetails
         Me.Label4.AutoSize = True
         Me.Label4.Location = New System.Drawing.Point(248, 96)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 13)
+        Me.Label4.Size = New System.Drawing.Size(75, 13)
         Me.Label4.TabIndex = 3
-        Me.Label4.Text = "Date Of Expirery"
+        Me.Label4.Text = "Date Of Expiry"
         '
         'lblRevieceAmount
         '
@@ -300,12 +301,24 @@ Partial Class DrugDetails
         Me.txtOrderNo1.Size = New System.Drawing.Size(97, 20)
         Me.txtOrderNo1.TabIndex = 31
         '
+        'lblExpiredMsg
+        '
+        Me.lblExpiredMsg.AutoSize = True
+        Me.lblExpiredMsg.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblExpiredMsg.ForeColor = System.Drawing.Color.Red
+        Me.lblExpiredMsg.Location = New System.Drawing.Point(500, 94)
+        Me.lblExpiredMsg.Name = "lblExpiredMsg"
+        Me.lblExpiredMsg.Size = New System.Drawing.Size(83, 24)
+        Me.lblExpiredMsg.TabIndex = 32
+        Me.lblExpiredMsg.Text = "Expired"
+        '
         'DrugDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(714, 422)
         Me.ControlBox = False
+        Me.Controls.Add(Me.lblExpiredMsg)
         Me.Controls.Add(Me.txtOrderNo1)
         Me.Controls.Add(Me.txtStockLabel)
         Me.Controls.Add(Me.Label7)
@@ -373,4 +386,5 @@ Partial Class DrugDetails
     Friend WithEvents txtStockLabel As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents txtOrderNo1 As System.Windows.Forms.TextBox
+    Friend WithEvents lblExpiredMsg As System.Windows.Forms.Label
 End Class

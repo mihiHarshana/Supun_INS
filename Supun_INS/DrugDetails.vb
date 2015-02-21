@@ -192,13 +192,15 @@
             Exit Sub
         End If
         Dim res As String
-        '  msgB.msgOKInf(o1.getOnumber)
-        o1.setONumber(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
+        '  msgB.msgOKInf(o1.getOnumber & " beofre setting")
+
+        o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
         '  msgB.msgOKInf(o1.getOnumber & "after setting")
 
         If intViewed = 0 Then
             res = DAO.addOder(o1.getOnumber, o1.getoDateOfIsse, o1.getoType, DataGridView1.RowCount - 1)
         Else
+            o1.setONumber(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
             DAO.editOrder(o1.getOnumber, DataGridView1.RowCount - 1)
         End If
 
@@ -221,10 +223,11 @@
         End If
         If o1.getoType = "ISS" Then
             Dim intC As Integer
-            ' msgB.msgOKInf(DataGridView1.Rows.Count)
-            For intC = 0 To DataGridView1.Rows.Count - 2
+
+            For intC = intViewed To DataGridView1.Rows.Count - 2
                 Dim daDrug = DAO.getDrugDetailsByDID(DataGridView1.Rows(intC).Cells(7).Value)
                 DAO.edit_DrugDetailsbyDrugID(daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(intC).Cells(6).Value)
+                msgB.msgOKInf("Orderno when Issueing " & o1.getOnumber)
                 DAO.addOderDetails("0", o1.getOnumber, daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(intC).Cells(5).Value)
             Next
         End If

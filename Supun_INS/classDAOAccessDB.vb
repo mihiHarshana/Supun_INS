@@ -266,6 +266,20 @@ Public Class classDAOAccessDB
         DBConnection.closeDBConnection()
     End Function
 
+    Public Function editOrder(ByVal byOrderNo As String, ByVal intOderItems As Integer) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_Order where OrderNo = '" & byOrderNo & "'"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        dsA.Tables(strDBNAME).Rows(0).Item("OrderItems") = intOderItems
+        daA.Update(dsA, strDBNAME)
+        Return "Updated"
+
+    End Function
+
 
     Public Function getOrderDetailsByOrderID(ByVal OrderID As String) As DataSet
 

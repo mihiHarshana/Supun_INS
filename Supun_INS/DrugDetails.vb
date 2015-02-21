@@ -1,6 +1,7 @@
 ﻿Public Class DrugDetails
     Public strTType As String = ""
     Private strRDBText As String = ""
+    Private intViewed As Integer = 0 ' if 0 will update all the rows, else will update from that point
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
         Call clearALL()
@@ -18,6 +19,7 @@
         dtREcDate.Value = Today
         strTType = ""
         strRDBText = ""
+        intViewed = 0
 
         DataGridView1.Columns.Clear()
         DataGridView1.ColumnCount = 8
@@ -60,8 +62,6 @@
         strTType = "REC"
         o1.setoType("REC")
         strRDBText = "Recieve"
-
-  
 
         Me.txtDrugName.Clear()
         Me.txtRecAmount.Clear()
@@ -192,19 +192,30 @@
             Exit Sub
         End If
         Dim res As String
-        'msgB.msgOKInf(o1.getOnumber)
-        o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
-        res = DAO.addOder(o1.getOnumber, o1.getoDateOfIsse, o1.getoType, DataGridView1.RowCount - 1)
+        '  msgB.msgOKInf(o1.getOnumber)
+        o1.setONumber(Me.txtOrderNo1.Text & "-" & Me.txtOrderNumber.Text)
+        '  msgB.msgOKInf(o1.getOnumber & "after setting")
+
+        If intViewed = 0 Then
+            res = DAO.addOder(o1.getOnumber, o1.getoDateOfIsse, o1.getoType, DataGridView1.RowCount - 1)
+        Else
+            DAO.editOrder(o1.getOnumber, DataGridView1.RowCount - 1)
+        End If
+
+
         If o1.getoType = "REC" Then
             Dim DrugID As String
 
             Dim inti As Integer
-            For inti = 0 To DataGridView1.Rows.Count - 2
+
+            For inti = intViewed To DataGridView1.Rows.Count - 2
                 With DataGridView1.Rows(inti)
                     DrugID = GenerateDrugID()
                     DAO.addDrugDetailsPerOrder(DrugID, .Cells(1).Value, .Cells(2).Value, .Cells(3).Value, .Cells(4).Value,
                                               .Cells(5).Value, .Cells(0).Value)
+
                     DAO.addOderDetails("0", o1.getOnumber, DrugID, .Cells(5).Value)
+  
                 End With
             Next
         End If
@@ -224,12 +235,14 @@
 
     Private Sub txtOrderNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOrderNumber.KeyPress
         If e.KeyChar = ChrW(Keys.Enter) Then
+            intViewed = 0 ' making this to 0 as this value should be loaded when loading
             If Me.rdbIssueDrug.Checked = False And Me.rdbRecieveDrug.Checked = False Then
                 msgB.msgOKInf("Please select a transaction type")
                 Call clearALL()
                 Exit Sub
             End If
             o1.setONumber(Me.txtOrderNo1.Text & Me.txtOrderNumber.Text)
+            ' msgB.msgOKInf(o1.getOnumber & "Order no on keypress event")
             If IsNothing(o1.getOnumber) = True Then
                 msgB.msgOKInf(strRDBText + " number can not be a blank")
                 Me.txtOrderNumber.Focus()
@@ -264,6 +277,7 @@
                     Me.txtOrderNo1.Text = str(0)
                     Me.dtREcDate.Value = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderDate")
                     Dim strOType As String = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderType")
+                    intViewed = dsRdrug.Tables(strDBNAME).Rows(0).Item("OrderItems")
                     If strOType = "REC" Then
                         Me.rdbRecieveDrug.Checked = True
                     End If
@@ -509,5 +523,9 @@
                 Me.lblExpiredMsg.Visible = False
             End If
         End If
+    End Sub
+
+    Private Sub txtOrderNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOrderNumber.TextChanged
+
     End Sub
 End Class

@@ -21,6 +21,8 @@ Public Class classDAOAccessDB
         Dim res As String
         If ds.Tables(STRDBNAME).Rows.Count = 1 Then
             If ds.Tables(strDBNAME).Rows(0).Item("uPword") = strUpword Then
+                user.setuId(ds.Tables(strDBNAME).Rows(0).Item("uid"))
+                user.setuType(ds.Tables(strDBNAME).Rows(0).Item("utype"))
                 res = "OK"
             Else
                 res = "Incorrect Password"
@@ -394,13 +396,20 @@ Public Class classDAOAccessDB
     Public Function getTotalPerSRNumber() As DataSet
 
         DBConnection.getAccessDBConnection(strDBNAME)
-        Dim strSQLOID As String = "SELECT  dSRNumber, sum(dAvailAmt) as tot   from table_Drug    Group BY DSRNumber"
+        Dim strSQLOID As String = "SELECT  dSRNumber , sum(dAvailAmt) as tot   from table_Drug    Group BY DSRNumber"
         Dim dsOID As New DataSet
         Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
         daOID.Fill(dsOID, strDBNAME)
 
         Return dsOID
     End Function
+
+
+
+
+
+
+
 
     Public Function getDrugNameBySRNumber(ByVal DsrNumber As String) As String
         DBConnection.getAccessDBConnection(strDBNAME)
@@ -411,4 +420,85 @@ Public Class classDAOAccessDB
 
         Return dsOID.Tables(strDBNAME).Rows(0).Item("dname").ToString
     End Function
+
+
+    Public Function getDrugREOLbyDSRNumber(ByVal DSRNumber As String) As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_DrugReorder where DSRNumber = '" & DSRNumber & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+        Return dsOID
+
+    End Function
+
+
+    Public Function addREOL(ByVal DSRNUMBER As String, ByVal REOL As Integer) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_DrugReorder"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        Dim dsnrA As DataRow
+        dsnrA = dsA.Tables(strDBNAME).NewRow
+
+        With dsnrA
+            .Item("DSRNumber") = DSRNUMBER
+            .Item("REOL") = REOL
+   
+        End With
+        dsA.Tables(strDBNAME).Rows.Add(dsnrA)
+        daA.Update(dsA, strDBNAME)
+        dsA = Nothing
+        daA = Nothing
+
+        Return "Added"
+    End Function
+
+
+    Public Function editREOL(ByVal DSRNUMBER As String, ByVal REOL As Integer) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLU As String = "Select * from table_DrugReorder where DSRNUMBER='" & DSRNUMBER & "'"
+        Dim dsU As New DataSet
+        Dim daU As New OleDb.OleDbDataAdapter(strSQLU, DBcn)
+        Dim cbU As New OleDb.OleDbCommandBuilder(daU)
+        daU.Fill(dsU, strDBNAME)
+        'Dim intU As Integer
+        With dsU.Tables(strDBNAME)
+            '  For intU = 0 To .Rows.Count - 1
+            .Rows(0).Item("REOL") = REOL
+            ' Next
+            daU.Update(dsU, strDBNAME)
+            strSQLU = Nothing
+            daU = Nothing
+            dsU = Nothing
+            cbU = Nothing
+            GC.Collect()
+            Return "Updated"
+        End With
+    End Function
+
+    Public Function getAllfromDrugREOL() As DataSet
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_DrugReorder "
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+        Return dsOID
+
+    End Function
+
+
+
+    Public Function getDrugNameBydSRNumber(ByVal dSRNumber As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim strSQLOID As String = "Select * from table_Drug where dSRNumber = '" & dSRNumber & "'"
+        Dim dsOID As New DataSet
+        Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+        daOID.Fill(dsOID, strDBNAME)
+        Return dsOID.Tables(strDBNAME).Rows(0).Item("dname")
+    End Function
+
 End Class

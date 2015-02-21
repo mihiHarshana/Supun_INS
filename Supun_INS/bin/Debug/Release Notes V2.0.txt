@@ -1,0 +1,9 @@
+Change Database
+
+Added new table
+
+table_DrugReorder
+
+DSRNumber Text
+REOL      Number
+TotPeSRNumber Number

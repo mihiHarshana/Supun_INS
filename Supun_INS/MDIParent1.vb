@@ -79,9 +79,6 @@ Public Class MDIParent1
 
     Private m_ChildFormNumber As Integer
 
-    Private Sub FileToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileToolStripMenuItem.Click
-
-    End Sub
 
     Private Sub InventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryToolStripMenuItem.Click
 
@@ -115,7 +112,18 @@ Public Class MDIParent1
             .Columns(5).Name = "Store Location"
         End With
 
+        With DataGridView2
+            .Columns.Clear()
+            .ColumnCount = 3
+            .Columns(0).Name = "SRNumber"
+            .Columns(1).Name = "Drug Name"
+            .Columns(2).Name = "Available Amount"
+        End With
+
+       
+
         Call LoadDataGridData()
+        Call LoadGrid2Data()
         Me.Text = "Inventory Control System " & strVersion
     End Sub
 
@@ -179,7 +187,39 @@ Public Class MDIParent1
 
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+    Public Sub LoadGrid2Data()
+        ' Loading Drid2 data 
+        ' ----- getting REOL setted drug DSRNumbers --- from table_DrugReorder
 
+        Dim dsDA As DataSet = DAO.getAllfromDrugREOL()
+        Dim dsRA As DataSet = DAO.getTotalPerSRNumber()
+
+        Dim intII As Integer
+        Dim intI2 As Integer
+        Dim intAvailAmount As Integer
+        For intII = 0 To dsDA.Tables(strDBNAME).Rows.Count - 1
+            For intI2 = 0 To dsRA.Tables(strDBNAME).Rows.Count - 1
+                If dsRA.Tables(strDBNAME).Rows(intI2).Item("DSRNumber") = dsDA.Tables(strDBNAME).Rows(intII).Item("DSRNumber") Then
+
+
+                    With dsRA.Tables(strDBNAME).Rows(intI2)
+                        intAvailAmount = Convert.ToInt32(.Item("tot").ToString)
+                        If dsDA.Tables(strDBNAME).Rows(intII).Item("REOL") >= intAvailAmount Then
+                            DataGridView2.Rows.Add(.Item(0).ToString, .Item(0).ToString, .Item("tot").ToString)
+                        End If
+                    End With
+                End If
+            Next
+
+            ' changing column2 to drug name
+            Dim intI3 As Integer
+            Dim value As String
+            For intI3 = 0 To DataGridView2.Rows.Count - 2
+                value = DAO.getDrugNameBydSRNumber(DataGridView2.Rows(intI3).Cells(0).Value)
+                DataGridView2.Rows(intI3).Cells(1).Value = value
+            Next
+        Next
+        dtColor.DataGrid1_rowcolors(dsDA, Me.DataGridView2)
     End Sub
+
 End Class

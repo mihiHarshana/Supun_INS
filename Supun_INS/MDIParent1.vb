@@ -86,7 +86,7 @@ Public Class MDIParent1
     Private Sub InventoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles InventoryToolStripMenuItem.Click
 
         frm_drugDetails = New DrugDetails
-        frm_drugDetails.Show()
+        frm_drugDetails.ShowDialog()
 
     End Sub
 
@@ -122,13 +122,13 @@ Public Class MDIParent1
     Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
         Dim druglist As New frmDrugPopUp
         blnDrugPopUpFromMenu = True
-        druglist.Show()
+        druglist.ShowDialog()
 
     End Sub
 
     Private Sub AboutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AboutToolStripMenuItem.Click
         Dim frm_aboutBox As New AboutBox1
-        frm_aboutBox.Show()
+        frm_aboutBox.ShowDialog()
 
     End Sub
 
@@ -143,7 +143,7 @@ Public Class MDIParent1
 
     Private Sub OrdersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OrdersToolStripMenuItem.Click
         Dim frm_orderDetails As New frmOrderDetails
-        frm_orderDetails.Show()
+        frm_orderDetails.ShowDialog()
 
     End Sub
 
@@ -175,7 +175,7 @@ Public Class MDIParent1
 
     Private Sub TotalPerSRNoToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TotalPerSRNoToolStripMenuItem.Click
         Dim frm_OderBySRNumber As New frmOrderBySRNumber
-        frm_OderBySRNumber.Show()
+        frm_OderBySRNumber.ShowDialog()
 
     End Sub
 

@@ -23,7 +23,7 @@
 
     Public d1 As New Drugs
     Public o1 As New Order
-    Public Const strVersion As String = "V1.2 Build 21022015_1803"
+    Public Const strVersion As String = "V1.2 Build 21022015_1933_Snapshot"
 
     Public dtColor As New classMDataGridL
 

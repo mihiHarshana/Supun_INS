@@ -8,6 +8,7 @@
     End Sub
 
     Public Sub clearALL()
+        Me.txtRecAmount.Enabled = True
         txtTotStock.Enabled = False ' just displaying the total
         rdbIssueDrug.Checked = False
         rdbRecieveDrug.Checked = False
@@ -183,6 +184,8 @@
         btnRemove.Enabled = True
         Me.btnUpdate.Enabled = True
         Me.txtTotStock.Text = "0"
+        Me.txtRecAmount.Enabled = True
+
 
     End Sub
 
@@ -227,13 +230,17 @@
             For intC = intViewed To DataGridView1.Rows.Count - 2
                 Dim daDrug = DAO.getDrugDetailsByDID(DataGridView1.Rows(intC).Cells(7).Value)
                 DAO.edit_DrugDetailsbyDrugID(daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(intC).Cells(6).Value)
-                msgB.msgOKInf("Orderno when Issueing " & o1.getOnumber)
+                ' msgB.msgOKInf("Orderno when Issueing " & o1.getOnumber)
                 DAO.addOderDetails("0", o1.getOnumber, daDrug.Tables(strDBNAME).Rows(0).Item("dID"), DataGridView1.Rows(intC).Cells(5).Value)
             Next
         End If
         msgB.msgOKInf("Added New order details successfully")
         MDIParent1.LoadDataGridData()
         Call clearALL()
+    End Sub
+
+    Private Sub txtOrderNumber_KeyDown(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles txtOrderNumber.KeyDown
+
     End Sub
 
     Private Sub txtOrderNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtOrderNumber.KeyPress
@@ -351,6 +358,7 @@
                 '' Log this error.
                 Exit Sub
             End If
+            Me.txtRecAmount.Enabled = False
             btnAdd.Enabled = True
         End If
     End Sub

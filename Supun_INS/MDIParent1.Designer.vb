@@ -30,12 +30,15 @@ Partial Class MDIParent1
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TotalPerSRNoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdministrationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AddUsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -43,7 +46,7 @@ Partial Class MDIParent1
         '
         'MenuStrip
         '
-        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.MenuStrip.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.AdministrationsToolStripMenuItem, Me.HelpToolStripMenuItem})
         Me.MenuStrip.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip.Name = "MenuStrip"
         Me.MenuStrip.Size = New System.Drawing.Size(946, 24)
@@ -86,6 +89,19 @@ Partial Class MDIParent1
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'AdministrationsToolStripMenuItem
+        '
+        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem})
+        Me.AdministrationsToolStripMenuItem.Name = "AdministrationsToolStripMenuItem"
+        Me.AdministrationsToolStripMenuItem.Size = New System.Drawing.Size(103, 20)
+        Me.AdministrationsToolStripMenuItem.Text = "Administrations"
+        '
+        'AddUsersToolStripMenuItem
+        '
+        Me.AddUsersToolStripMenuItem.Name = "AddUsersToolStripMenuItem"
+        Me.AddUsersToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.AddUsersToolStripMenuItem.Text = "Add Users"
         '
         'HelpToolStripMenuItem
         '
@@ -137,6 +153,12 @@ Partial Class MDIParent1
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Drugs Reached REOL"
         '
+        'ChangePasswordToolStripMenuItem
+        '
+        Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
+        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ChangePasswordToolStripMenuItem.Text = "Change Password"
+        '
         'MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -173,5 +195,8 @@ Partial Class MDIParent1
     Friend WithEvents TotalPerSRNoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents AdministrationsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AddUsersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ChangePasswordToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

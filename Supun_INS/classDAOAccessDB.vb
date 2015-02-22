@@ -21,8 +21,9 @@ Public Class classDAOAccessDB
         Dim res As String
         If ds.Tables(STRDBNAME).Rows.Count = 1 Then
             If ds.Tables(strDBNAME).Rows(0).Item("uPword") = strUpword Then
-                user.setuId(ds.Tables(strDBNAME).Rows(0).Item("uid"))
-                user.setuType(ds.Tables(strDBNAME).Rows(0).Item("utype"))
+                ' user.setuId(ds.Tables(strDBNAME).Rows(0).Item("uid"))
+                strLUType = ds.Tables(strDBNAME).Rows(0).Item("utype")
+                strLUserName = ds.Tables(strDBNAME).Rows(0).Item("uName")
                 res = "OK"
             Else
                 res = "Incorrect Password"
@@ -31,6 +32,81 @@ Public Class classDAOAccessDB
             res = "Invalid User Name"
         End If
         Return res
+    End Function
+
+    Public Function getUsers(ByVal strUName As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+
+        Dim ds As New DataSet
+        Dim strsql As String = "Select * from table_Users where uName='" & strUName & "'"
+        Dim da As New OleDb.OleDbDataAdapter(strsql, DBcn)
+        da.Fill(ds, strDBNAME)
+        Dim res As String
+        If ds.Tables(strDBNAME).Rows.Count = 1 Then
+
+            user.setuId(ds.Tables(strDBNAME).Rows(0).Item("uid"))
+            user.setuType(ds.Tables(strDBNAME).Rows(0).Item("utype"))
+            user.setuName(ds.Tables(strDBNAME).Rows(0).Item("uName"))
+            res = STROK
+
+        Else
+        res = "Invalid User Name"
+        End If
+        Return res
+    End Function
+
+
+    Public Function addUsers(ByVal uID As Integer, ByVal uName As String, ByVal upword As String, ByVal uType As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_Users"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        Dim dsnrA As DataRow
+        dsnrA = dsA.Tables(strDBNAME).NewRow
+
+        With dsnrA
+            .Item("uid") = uID
+            .Item("uName") = uName
+            .Item("uPword") = upword
+            .Item("utype") = uType
+
+
+        End With
+        dsA.Tables(strDBNAME).Rows.Add(dsnrA)
+        daA.Update(dsA, strDBNAME)
+        dsA = Nothing
+        daA = Nothing
+
+        Return "Added"
+    End Function
+
+    Public Function getUserCount() As Integer
+        DBConnection.getAccessDBConnection(strDBNAME)
+
+        Dim dsL As New DataSet
+        Dim strSQLL As String = "select *  from table_Users"
+
+        Dim daL As New OleDb.OleDbDataAdapter(strSQLL, DBcn)
+        daL.Fill(dsL, strDBNAME)
+        DBConnection.closeDBConnection()
+        Return dsL.Tables(strDBNAME).Rows.Count
+    End Function
+
+    Public Function editUserDetails(ByVal strUname As String, ByVal strPassword As String, ByVal strUtype As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_Users where uName = '" & strUname & "'"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        dsA.Tables(strDBNAME).Rows(0).Item("uPword") = strPassword
+        dsA.Tables(strDBNAME).Rows(0).Item("utype") = strUtype
+        daA.Update(dsA, strDBNAME)
+        Return "Updated"
     End Function
 
 

@@ -120,7 +120,12 @@ Public Class MDIParent1
             .Columns(2).Name = "Available Amount"
         End With
 
-       
+        If strLUType = "Admin" Then
+            AddUsersToolStripMenuItem.Enabled = True
+        Else
+            AddUsersToolStripMenuItem.Enabled = False
+
+        End If
 
         Call LoadDataGridData()
         Call LoadGrid2Data()
@@ -222,4 +227,16 @@ Public Class MDIParent1
         dtColor.DataGrid1_rowcolors(dsDA, Me.DataGridView2)
     End Sub
 
+    Private Sub AddUsersToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AddUsersToolStripMenuItem.Click
+        Dim addUser As New frmAddUsers
+        strAddUser = "AddUser"
+        addUser.ShowDialog()
+    End Sub
+
+    Private Sub ChangePasswordToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChangePasswordToolStripMenuItem.Click
+        Dim changePassword As New frmAddUsers
+        strAddUser = "ChangePassword"
+        changePassword.ShowDialog()
+
+    End Sub
 End Class

@@ -27,4 +27,10 @@
 
     Public dtColor As New classMDataGridL
     Public blnDrugPopUpFromMenu As Boolean = False
+
+    Public strAddUser As String = "AddUser" ' if add user if do the add user
+
+    Public strLUserName As String = ""
+    Public strLUType As String = ""
+
 End Module

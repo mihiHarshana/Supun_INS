@@ -92,6 +92,7 @@ Partial Class frmAddUsers
         '
         Me.txtPassword1.Location = New System.Drawing.Point(142, 61)
         Me.txtPassword1.Name = "txtPassword1"
+        Me.txtPassword1.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword1.Size = New System.Drawing.Size(160, 20)
         Me.txtPassword1.TabIndex = 1
         '
@@ -99,6 +100,7 @@ Partial Class frmAddUsers
         '
         Me.txtPassword2.Location = New System.Drawing.Point(142, 87)
         Me.txtPassword2.Name = "txtPassword2"
+        Me.txtPassword2.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassword2.Size = New System.Drawing.Size(160, 20)
         Me.txtPassword2.TabIndex = 2
         '

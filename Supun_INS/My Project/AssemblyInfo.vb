@@ -9,7 +9,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Supun_INS")> 
-<Assembly: AssemblyDescription("Inventory Control System V1.1")> 
+<Assembly: AssemblyDescription("Inventory Control System V3.0")> 
 <Assembly: AssemblyCompany("MhSoftSolutions")> 
 <Assembly: AssemblyProduct("Supun_INS")> 
 <Assembly: AssemblyCopyright("Copyright © MhSoftSolutions")> 
@@ -32,4 +32,4 @@ Imports System.Runtime.InteropServices
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
 <Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("3.0.0.0")> 

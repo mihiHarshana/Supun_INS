@@ -1,5 +1,5 @@
-Release note for V3.0
-
+Release note for V2.0    22/02/2015 15:06
+ 
 New table will be added named history.
 
 Table Name : table_History
@@ -8,17 +8,9 @@ trDate - date/time
 trDesc- text
 trUser - Text
 
+-------------------------------------------
 
-
-
-
-===============================================================
-Verions 2.0
-Change Database
-
-Added new table
-
-table_DrugReorder
+TAble Name : table_DrugReorder
 
 DSRNumber Text
 REOL      Number

@@ -35,9 +35,11 @@ Public NotInheritable Class SplashScreen1
         Copyright.Text = My.Application.Info.Copyright
         Me.Version.Text = strVersion
         Timer1.Enabled = True
-        Timer1.Interval = 100
-        ProgressBar1.Minimum = 10
-        ProgressBar1.Maximum = 10000
+        Timer1.Interval = 1000
+        ProgressBar1.Minimum = 0
+        ProgressBar1.Maximum = 1000
+
+
 
 
     End Sub
@@ -46,20 +48,25 @@ Public NotInheritable Class SplashScreen1
 
         Dim inti As Integer
         For inti = ProgressBar1.Minimum To ProgressBar1.Maximum
-            ProgressBar1.Value = inti
+            ProgressBar1.Increment(inti)
 
-            If inti = ProgressBar1.Minimum Then
-                Thread.Sleep(2000)
+            Application.DoEvents()
+            'Timer1.Enabled = False
 
-                Dim frmlogin As New frmLoginScreen
-                Me.Hide()
-                frmlogin.Show()
-                Timer1.Enabled = False
-
-            End If
         Next
 
+        Dim frmlogin As New frmLoginScreen
+        Me.Hide()
+        frmlogin.Show()
+        Timer1.Enabled = False
     End Sub
 
 
+    Private Sub ApplicationTitle_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ApplicationTitle.Click
+
+    End Sub
+
+    Private Sub Version_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Version.Click
+
+    End Sub
 End Class

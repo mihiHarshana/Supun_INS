@@ -151,7 +151,7 @@ Public Class classDAOAccessDB
         Try
             Dim months As Date = Date.Today.AddMonths(3)
             DBConnection.getAccessDBConnection(strDBNAME)
-            Dim strSQLOID As String = "Select * from table_Drug where dExpDate <= #" & months & "#"
+            Dim strSQLOID As String = "Select * from table_Drug where dExpDate <= #" & months & "# AND dAvailAmt >= '" & 1 & "'"
             Dim dsOID As New DataSet
             Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
             daOID.Fill(dsOID, strDBNAME)

@@ -26,7 +26,5 @@
     Public Const strVersion As String = "V1.2 Build 21022015_2344_Snapshot"
 
     Public dtColor As New classMDataGridL
-
-
     Public blnDrugPopUpFromMenu As Boolean = False
 End Module

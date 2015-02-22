@@ -79,7 +79,7 @@ Public Class classDAOAccessDB
         daA.Update(dsA, strDBNAME)
         dsA = Nothing
         daA = Nothing
-
+        DAO.addHistory(Now, "uID -" & uID & "|" & "uName -" & uName & "|" & "uType - " & uType & "New user added", strLUserName)
         Return "Added"
     End Function
 
@@ -106,6 +106,7 @@ Public Class classDAOAccessDB
         dsA.Tables(strDBNAME).Rows(0).Item("uPword") = strPassword
         dsA.Tables(strDBNAME).Rows(0).Item("utype") = strUtype
         daA.Update(dsA, strDBNAME)
+        DAO.addHistory(Now, "strUname -" & strUname & "|" & "strUtype -" & strUtype & "User details Updated", strLUserName)
         Return "Updated"
     End Function
 
@@ -153,6 +154,7 @@ Public Class classDAOAccessDB
         End With
         dsA.Tables(strDBNAME).Rows.Add(dsnrA)
         daA.Update(dsA, strDBNAME)
+        DAO.addHistory(Now, "did -" & dID & "|" & "dsrNumber -" & dsrNumber & "|" & "dRecAmt - " & dRecAmt & "Add Drug Details", strLUserName)
         Return "Added"
     End Function
 
@@ -196,7 +198,7 @@ Public Class classDAOAccessDB
         daA.Update(dsA, strDBNAME)
         dsA = Nothing
         daA = Nothing
-
+        DAO.addHistory(Now, "OrderNo -" & OrderNo & "|" & "OrderDate -" & OrderDate & "|" & "OrderType - " & OrderType & "|" & "OrderItems - " & OrderItems & "oder added", strLUserName)
         Return "Added"
     End Function
 
@@ -301,6 +303,9 @@ Public Class classDAOAccessDB
         End With
         dsA.Tables(strDBNAME).Rows.Add(dsnrA)
         daA.Update(dsA, strDBNAME)
+
+        DAO.addHistory(Now, "dID -" & dID & "|" & "dSRNumber -" & dSRNumber & "|" & "dAvailAmt - " & dAvailAmt & "Drug Details added", strLUserName)
+
         Return "Added"
         DBConnection.closeDBConnection()
     End Function
@@ -340,6 +345,7 @@ Public Class classDAOAccessDB
         End With
         dsA.Tables(strDBNAME).Rows.Add(dsnrA)
         daA.Update(dsA, strDBNAME)
+        DAO.addHistory(Now, "OrderNo -" & OrderNo & "|" & "DrugId -" & DrugId & "|" & "OrderAmount - " & OrderAmount & "Order details added", strLUserName)
         Return "Added"
         DBConnection.closeDBConnection()
     End Function
@@ -354,6 +360,8 @@ Public Class classDAOAccessDB
         Dim cbA As New OleDb.OleDbCommandBuilder(daA)
         dsA.Tables(strDBNAME).Rows(0).Item("OrderItems") = intOderItems
         daA.Update(dsA, strDBNAME)
+        DAO.addHistory(Now, "intOderItems -" & intOderItems & "edited details added", strLUserName)
+
         Return "Updated"
 
     End Function
@@ -480,13 +488,6 @@ Public Class classDAOAccessDB
         Return dsOID
     End Function
 
-
-
-
-
-
-
-
     Public Function getDrugNameBySRNumber(ByVal DsrNumber As String) As String
         DBConnection.getAccessDBConnection(strDBNAME)
         Dim strSQLOID As String = "SELECT  dName   from table_Drug    where  dsRNumber='" & DsrNumber & "'"
@@ -529,7 +530,7 @@ Public Class classDAOAccessDB
         daA.Update(dsA, strDBNAME)
         dsA = Nothing
         daA = Nothing
-
+        DAO.addHistory(Now, "DSRNUMBER -" & DSRNUMBER & "|" & "REOL -" & REOL & "REOL addded", strLUserName)
         Return "Added"
     End Function
 
@@ -552,6 +553,7 @@ Public Class classDAOAccessDB
             dsU = Nothing
             cbU = Nothing
             GC.Collect()
+            DAO.addHistory(Now, "DSRNUMBER -" & DSRNUMBER & "|" & "REOL -" & REOL & "REOL edited", strLUserName)
             Return "Updated"
         End With
     End Function
@@ -566,8 +568,6 @@ Public Class classDAOAccessDB
 
     End Function
 
-
-
     Public Function getDrugNameBydSRNumber(ByVal dSRNumber As String) As String
         DBConnection.getAccessDBConnection(strDBNAME)
         Dim strSQLOID As String = "Select * from table_Drug where dSRNumber = '" & dSRNumber & "'"
@@ -577,4 +577,28 @@ Public Class classDAOAccessDB
         Return dsOID.Tables(strDBNAME).Rows(0).Item("dname")
     End Function
 
+    Public Function addHistory(ByVal trDAte As DateTime, ByVal trDesc As String, ByVal trUser As String) As String
+        DBConnection.getAccessDBConnection(strDBNAME)
+        Dim dsA As New DataSet
+        Dim STRSQLA As String = "Select * from table_History"
+        Dim daA As New OleDb.OleDbDataAdapter(STRSQLA, DBcn)
+        daA.Fill(dsA, strDBNAME)
+
+        Dim cbA As New OleDb.OleDbCommandBuilder(daA)
+        Dim dsnrA As DataRow
+        dsnrA = dsA.Tables(strDBNAME).NewRow
+
+        With dsnrA
+            .Item("trDate") = trDAte
+            .Item("trDesc") = trDesc
+            .Item("trUser") = trUser
+
+        End With
+        dsA.Tables(strDBNAME).Rows.Add(dsnrA)
+        daA.Update(dsA, strDBNAME)
+        dsA = Nothing
+        daA = Nothing
+
+        Return "Added"
+    End Function
 End Class

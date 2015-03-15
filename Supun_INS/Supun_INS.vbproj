@@ -111,10 +111,10 @@
     <Compile Include="frmAddUsers.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDrugInventory.Designer.vb">
-      <DependentUpon>frmDrugInventory.vb</DependentUpon>
+    <Compile Include="frmDisplayHistory.Designer.vb">
+      <DependentUpon>frmDisplayHistory.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmDrugInventory.vb">
+    <Compile Include="frmDisplayHistory.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDrugPopUp.Designer.vb">
@@ -184,8 +184,8 @@
     <EmbeddedResource Include="frmAddUsers.resx">
       <DependentUpon>frmAddUsers.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDrugInventory.resx">
-      <DependentUpon>frmDrugInventory.vb</DependentUpon>
+    <EmbeddedResource Include="frmDisplayHistory.resx">
+      <DependentUpon>frmDisplayHistory.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDrugPopUp.resx">
       <DependentUpon>frmDrugPopUp.vb</DependentUpon>

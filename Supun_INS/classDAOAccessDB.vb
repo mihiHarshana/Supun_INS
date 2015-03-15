@@ -601,4 +601,19 @@ Public Class classDAOAccessDB
 
         Return "Added"
     End Function
+
+    Public Function getTRHistory() As DataSet
+
+        DBConnection.getAccessDBConnection(strDBNAME)
+
+        Dim dsL As New DataSet
+        Dim strSQLL As String = "Select * from table_History order By trID DESC"
+
+        Dim daL As New OleDb.OleDbDataAdapter(strSQLL, DBcn)
+        daL.Fill(dsL, strDBNAME)
+        DBConnection.closeDBConnection()
+
+        Return dsL
+
+    End Function
 End Class

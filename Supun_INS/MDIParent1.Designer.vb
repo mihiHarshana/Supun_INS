@@ -32,13 +32,14 @@ Partial Class MDIParent1
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddUsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -92,7 +93,7 @@ Partial Class MDIParent1
         '
         'AdministrationsToolStripMenuItem
         '
-        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem})
+        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem, Me.HistoryToolStripMenuItem})
         Me.AdministrationsToolStripMenuItem.Name = "AdministrationsToolStripMenuItem"
         Me.AdministrationsToolStripMenuItem.Size = New System.Drawing.Size(103, 20)
         Me.AdministrationsToolStripMenuItem.Text = "Administrations"
@@ -102,6 +103,12 @@ Partial Class MDIParent1
         Me.AddUsersToolStripMenuItem.Name = "AddUsersToolStripMenuItem"
         Me.AddUsersToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
         Me.AddUsersToolStripMenuItem.Text = "Add Users"
+        '
+        'ChangePasswordToolStripMenuItem
+        '
+        Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
+        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ChangePasswordToolStripMenuItem.Text = "Change Password"
         '
         'HelpToolStripMenuItem
         '
@@ -153,11 +160,11 @@ Partial Class MDIParent1
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Drugs Reached REOL"
         '
-        'ChangePasswordToolStripMenuItem
+        'HistoryToolStripMenuItem
         '
-        Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
-        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
-        Me.ChangePasswordToolStripMenuItem.Text = "Change Password"
+        Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.HistoryToolStripMenuItem.Text = "History"
         '
         'MDIParent1
         '
@@ -198,5 +205,6 @@ Partial Class MDIParent1
     Friend WithEvents AdministrationsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AddUsersToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ChangePasswordToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

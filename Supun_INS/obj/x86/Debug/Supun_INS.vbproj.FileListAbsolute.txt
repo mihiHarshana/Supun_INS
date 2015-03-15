@@ -5,7 +5,6 @@ C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.About.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.AboutBox1.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.DrugDetails.resources
-C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDrugInventory.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDrugPopUp.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmLoginScreen.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderDetails.resources
@@ -19,3 +18,4 @@ C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderBySRNumber.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmAddUsers.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.SplashScreen1.resources
+C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDisplayHistory.resources

@@ -122,9 +122,11 @@ Public Class MDIParent1
 
         If strLUType = "Admin" Then
             AddUsersToolStripMenuItem.Enabled = True
+            HistoryToolStripMenuItem.Enabled = True
+
         Else
             AddUsersToolStripMenuItem.Enabled = False
-
+            HistoryToolStripMenuItem.Enabled = False
         End If
 
         Call LoadDataGridData()
@@ -237,6 +239,12 @@ Public Class MDIParent1
         Dim changePassword As New frmAddUsers
         strAddUser = "ChangePassword"
         changePassword.ShowDialog()
+
+    End Sub
+
+    Private Sub HistoryToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles HistoryToolStripMenuItem.Click
+        Dim frm_DisplaayHistory As New frmDisplayHistory
+        frmDisplayHistory.ShowDialog()
 
     End Sub
 End Class

@@ -121,18 +121,12 @@ Public Class MDIParent1
             .Columns(2).Name = "Available Amount"
         End With
 
-        If strLUType = "Admin" Then
-            AddUsersToolStripMenuItem.Enabled = True
-            HistoryToolStripMenuItem.Enabled = True
 
-        Else
-            AddUsersToolStripMenuItem.Enabled = False
-            HistoryToolStripMenuItem.Enabled = False
-        End If
 
         Call LoadDataGridData()
         Call LoadGrid2Data()
-        Me.Text = "Inventory Control System " & strVersion
+        '  Me.Text = "Inventory Control System " & strVersion & "| User - " & strLUserName & "User Type -" & strLUType
+        Me.Refresh()
     End Sub
 
     Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
@@ -248,5 +242,17 @@ Public Class MDIParent1
         Dim frm_DisplaayHistory As New frmDisplayHistory
         frmDisplayHistory.ShowDialog()
 
+    End Sub
+
+    Private Sub LogOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogOutToolStripMenuItem.Click
+        DAO.addHistory(Now, "Log Out | UserName-" & strLUserName & "| UserType-" & strLUType, strLUserName)
+        strLUserName = ""
+        strLUType = ""
+        GC.Collect()
+
+        Dim frm_Login1 As New frmLoginScreen
+
+        frm_Login1.Show()
+        Me.Hide()
     End Sub
 End Class

@@ -17,6 +17,15 @@ Public Class frmLoginScreen
             If strRes = "OK" Then
                 DAO.addHistory(Now, "Login | UserName-" & strLUserName & "| UserType-" & strLUType, strLUserName)
                 Me.Hide()
+                If strLUType = "Admin" Then
+                    MDIParent1.AddUsersToolStripMenuItem.Enabled = True
+                    MDIParent1.HistoryToolStripMenuItem.Enabled = True
+
+                Else
+                    MDIParent1.AddUsersToolStripMenuItem.Enabled = False
+                    MDIParent1.HistoryToolStripMenuItem.Enabled = False
+                End If
+                MDIParent1.Text = "Inventory Control System " & strVersion & "| User - " & strLUserName & "User Type -" & strLUType
                 MDIParent1.Show()
             Else
                 msgB.msgOKInf(strRes)
@@ -33,6 +42,7 @@ Public Class frmLoginScreen
         'Me.txtUserName.Text = "Admin"
         'Me.txtPassword.Text = "Admin"
         Me.Text = strVersion
+
 
     End Sub
 

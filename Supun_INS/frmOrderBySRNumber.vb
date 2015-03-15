@@ -59,7 +59,7 @@
             ' msgB.msgOKInf(DataGridView1.SelectedCells.Item(0).Value.ToString())
             Dim dsD As DataSet = DAO.getDrugREOLbyDSRNumber(DataGridView1.SelectedCells.Item(0).Value.ToString())
             If dsD.Tables(strDBNAME).Rows.Count = 0 Then
-                Dim res = InputBox("Enter Re order Level for " & DataGridView1.SelectedCells.Item(0).Value.ToString(), "Enter Re order Level")
+                Dim res = InputBox("Enter Re order Level for " & DataGridView1.SelectedCells.Item(0).Value.ToString() & "(" & DataGridView1.SelectedCells.Item(1).Value.ToString() & ")", "Enter Re order Level")
                 If res <> "" Then
                     res = DAO.addREOL(DataGridView1.SelectedCells.Item(0).Value.ToString(), Convert.ToInt32(res))
                     If res = "Added" Then

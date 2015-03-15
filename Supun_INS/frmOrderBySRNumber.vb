@@ -43,13 +43,7 @@
                     If dsDD.Tables(strDBNAME).Rows.Count <> 0 Then
                         DataGridView1.Rows(intI2).Cells("REOL").Value = dsDD.Tables(strDBNAME).Rows(0).Item("REOL")
                     End If
-
-
                 Next
-
-
-
-
                 dtColor.DataGrid1_rowcolors(dsRA, Me.DataGridView1)
 
             Catch ex As Exception
@@ -58,13 +52,9 @@
         End With
     End Sub
 
-    Private Sub DataGridView1_CellContentDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentDoubleClick
-
-
-    End Sub
-
     Private Sub DataGridView1_CellMouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseDoubleClick
-        If user.getUType = "Admin" Then
+        ' msgB.msgOKInf(user.getUType)
+        If strLUType = "Admin" Then
 
             ' msgB.msgOKInf(DataGridView1.SelectedCells.Item(0).Value.ToString())
             Dim dsD As DataSet = DAO.getDrugREOLbyDSRNumber(DataGridView1.SelectedCells.Item(0).Value.ToString())
@@ -102,9 +92,6 @@
         End If
     End Sub
 
-    Private Sub DataGridView1_MouseDoubleClick(ByVal sender As Object, ByVal e As System.Windows.Forms.MouseEventArgs) Handles DataGridView1.MouseDoubleClick
-
-    End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
 

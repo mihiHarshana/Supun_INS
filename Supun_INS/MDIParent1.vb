@@ -91,6 +91,7 @@ Public Class MDIParent1
         Dim res As Boolean
         res = msgB.msgYesNoQuestion("Are you sure you want to Exit ")
         If res = True Then
+            DAO.addHistory(Now, "Exit | UserName-" & strLUserName & "| UserType-" & strLUType, strLUserName)
             End
         Else
             e.Cancel = True
@@ -152,6 +153,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+
         Close()
 
     End Sub

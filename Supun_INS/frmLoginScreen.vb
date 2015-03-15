@@ -15,6 +15,7 @@ Public Class frmLoginScreen
             Dim strRes As String
             strRes = DAO.getUsers(Me.txtUserName.Text, Me.txtPassword.Text)
             If strRes = "OK" Then
+                DAO.addHistory(Now, "Login | UserName-" & strLUserName & "| UserType-" & strLUType, strLUserName)
                 Me.Hide()
                 MDIParent1.Show()
             Else

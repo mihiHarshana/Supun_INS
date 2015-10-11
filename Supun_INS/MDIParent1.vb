@@ -193,7 +193,7 @@ Public Class MDIParent1
     Public Sub LoadGrid2Data()
         ' Loading Drid2 data 
         ' ----- getting REOL setted drug DSRNumbers --- from table_DrugReorder
-
+        DataGridView2.Rows.Clear()
         Dim dsDA As DataSet = DAO.getAllfromDrugREOL()
         Dim dsRA As DataSet = DAO.getTotalPerSRNumber()
 

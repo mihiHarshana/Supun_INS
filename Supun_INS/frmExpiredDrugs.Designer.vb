@@ -37,15 +37,15 @@ Partial Class frmExpiredDrugs
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(28, 59)
+        Me.DataGridView1.Location = New System.Drawing.Point(29, 59)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(378, 213)
+        Me.DataGridView1.Size = New System.Drawing.Size(489, 213)
         Me.DataGridView1.TabIndex = 0
         '
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(509, 59)
+        Me.DataGridView2.Location = New System.Drawing.Point(641, 59)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.Size = New System.Drawing.Size(378, 213)
         Me.DataGridView2.TabIndex = 1
@@ -53,7 +53,7 @@ Partial Class frmExpiredDrugs
         'btnAdd
         '
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(440, 100)
+        Me.btnAdd.Location = New System.Drawing.Point(560, 113)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(38, 37)
         Me.btnAdd.TabIndex = 2
@@ -63,7 +63,7 @@ Partial Class frmExpiredDrugs
         'btnRemove
         '
         Me.btnRemove.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRemove.Location = New System.Drawing.Point(440, 164)
+        Me.btnRemove.Location = New System.Drawing.Point(560, 177)
         Me.btnRemove.Name = "btnRemove"
         Me.btnRemove.Size = New System.Drawing.Size(36, 38)
         Me.btnRemove.TabIndex = 3
@@ -72,7 +72,7 @@ Partial Class frmExpiredDrugs
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(849, 291)
+        Me.btnClose.Location = New System.Drawing.Point(944, 300)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 4
@@ -81,7 +81,7 @@ Partial Class frmExpiredDrugs
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(768, 291)
+        Me.btnUpdate.Location = New System.Drawing.Point(863, 300)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
         Me.btnUpdate.TabIndex = 5
@@ -100,7 +100,7 @@ Partial Class frmExpiredDrugs
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(535, 26)
+        Me.Label2.Location = New System.Drawing.Point(668, 26)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(102, 13)
         Me.Label2.TabIndex = 7
@@ -110,7 +110,7 @@ Partial Class frmExpiredDrugs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(936, 326)
+        Me.ClientSize = New System.Drawing.Size(1059, 375)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnUpdate)

@@ -63,6 +63,8 @@
         strTType = "REC"
         o1.setoType("REC")
         strRDBText = "Recieve"
+        dtManDate.Enabled = True
+        dtDOExpiry.Enabled = True
 
         Me.txtDrugName.Clear()
         Me.txtRecAmount.Clear()
@@ -84,6 +86,8 @@
         strTType = "ISS"
         o1.setoType("ISS")
         strRDBText = "Issue"
+        dtManDate.Enabled = False
+        dtDOExpiry.Enabled = False
 
         Me.txtDrugName.Clear()
         Me.txtRecAmount.Clear()

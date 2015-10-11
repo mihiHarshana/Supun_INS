@@ -1,0 +1,32 @@
+Release notes for V 3.0   
+
+added field new field to table_Drug
+dactive Yes/No
+Follwing windows have been changed to load only the active drugs
+
+
+
+===============================================
+Release notes for  V2.1  10/10/2015 22:00
+
+No database changes.
+===============================================
+
+
+Release note for V2.0    22/02/2015 15:06
+ 
+New table will be added named history.
+
+Table Name : table_History
+trid - AutoNumber
+trDate - date/time
+trDesc- text
+trUser - Text
+
+-------------------------------------------
+
+TAble Name : table_DrugReorder
+
+DSRNumber Text
+REOL      Number
+TotPeSRNumber Number

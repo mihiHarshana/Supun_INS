@@ -123,6 +123,12 @@
     <Compile Include="frmDrugPopUp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmExpiredDrugs.Designer.vb">
+      <DependentUpon>frmExpiredDrugs.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExpiredDrugs.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmLoginScreen.Designer.vb">
       <DependentUpon>frmLoginScreen.vb</DependentUpon>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDrugPopUp.resx">
       <DependentUpon>frmDrugPopUp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExpiredDrugs.resx">
+      <DependentUpon>frmExpiredDrugs.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLoginScreen.resx">
       <DependentUpon>frmLoginScreen.vb</DependentUpon>

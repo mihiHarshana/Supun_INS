@@ -29,6 +29,7 @@ Partial Class MDIParent1
         Me.DrugListToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OrdersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TotalPerSRNoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministrationsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AddUsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -40,7 +41,7 @@ Partial Class MDIParent1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteExpiredDrugsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -86,6 +87,12 @@ Partial Class MDIParent1
         Me.TotalPerSRNoToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
         Me.TotalPerSRNoToolStripMenuItem.Text = "Total per SR No"
         '
+        'LogOutToolStripMenuItem
+        '
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
+        Me.LogOutToolStripMenuItem.Text = "Log out"
+        '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
@@ -94,7 +101,7 @@ Partial Class MDIParent1
         '
         'AdministrationsToolStripMenuItem
         '
-        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem, Me.HistoryToolStripMenuItem})
+        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem, Me.HistoryToolStripMenuItem, Me.DeleteExpiredDrugsToolStripMenuItem})
         Me.AdministrationsToolStripMenuItem.Name = "AdministrationsToolStripMenuItem"
         Me.AdministrationsToolStripMenuItem.Size = New System.Drawing.Size(103, 20)
         Me.AdministrationsToolStripMenuItem.Text = "Administrations"
@@ -102,19 +109,19 @@ Partial Class MDIParent1
         'AddUsersToolStripMenuItem
         '
         Me.AddUsersToolStripMenuItem.Name = "AddUsersToolStripMenuItem"
-        Me.AddUsersToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.AddUsersToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.AddUsersToolStripMenuItem.Text = "Add Users"
         '
         'ChangePasswordToolStripMenuItem
         '
         Me.ChangePasswordToolStripMenuItem.Name = "ChangePasswordToolStripMenuItem"
-        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.ChangePasswordToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.ChangePasswordToolStripMenuItem.Text = "Change Password"
         '
         'HistoryToolStripMenuItem
         '
         Me.HistoryToolStripMenuItem.Name = "HistoryToolStripMenuItem"
-        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(168, 22)
+        Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.HistoryToolStripMenuItem.Text = "History"
         '
         'HelpToolStripMenuItem
@@ -167,11 +174,11 @@ Partial Class MDIParent1
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Drugs Reached REOL"
         '
-        'LogOutToolStripMenuItem
+        'DeleteExpiredDrugsToolStripMenuItem
         '
-        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(156, 22)
-        Me.LogOutToolStripMenuItem.Text = "Log out"
+        Me.DeleteExpiredDrugsToolStripMenuItem.Name = "DeleteExpiredDrugsToolStripMenuItem"
+        Me.DeleteExpiredDrugsToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.DeleteExpiredDrugsToolStripMenuItem.Text = "Delete Expired Drugs"
         '
         'MDIParent1
         '
@@ -214,5 +221,6 @@ Partial Class MDIParent1
     Friend WithEvents ChangePasswordToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DeleteExpiredDrugsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

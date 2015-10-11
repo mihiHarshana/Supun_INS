@@ -193,7 +193,7 @@ Public Class MDIParent1
     Public Sub LoadGrid2Data()
         ' Loading Drid2 data 
         ' ----- getting REOL setted drug DSRNumbers --- from table_DrugReorder
-
+        DataGridView2.Rows.Clear()
         Dim dsDA As DataSet = DAO.getAllfromDrugREOL()
         Dim dsRA As DataSet = DAO.getTotalPerSRNumber()
 
@@ -254,5 +254,14 @@ Public Class MDIParent1
 
         frm_Login1.Show()
         Me.Hide()
+    End Sub
+
+    Private Sub DeleteExpiredDrugsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteExpiredDrugsToolStripMenuItem.Click
+        Dim frm_ExpiredDrugs As New frmExpiredDrugs
+        frm_ExpiredDrugs.ShowDialog()
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

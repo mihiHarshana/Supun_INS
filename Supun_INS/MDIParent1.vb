@@ -245,7 +245,7 @@ Public Class MDIParent1
     End Sub
 
     Private Sub LogOutToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LogOutToolStripMenuItem.Click
-        DAO.addHistory(Now, "Log Out | UserName-" & strLUserName & "| UserType-" & strLUType, strLUserName)
+        DAO.addHistory(Now, "Log Out | UserName- " & strLUserName & " | UserType- " & strLUType, strLUserName)
         strLUserName = ""
         strLUType = ""
         GC.Collect()

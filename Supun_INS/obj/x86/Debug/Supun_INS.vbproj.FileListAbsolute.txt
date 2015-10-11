@@ -19,3 +19,24 @@ C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmAddUsers.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.SplashScreen1.resources
 C:\Users\Mihindu\Documents\Visual Studio 2010\Projects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDisplayHistory.resources
+E:\gitProjects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.exe
+E:\gitProjects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.pdb
+E:\gitProjects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.xml
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.About.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.AboutBox1.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.DrugDetails.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmAddUsers.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDisplayHistory.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmDrugPopUp.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmLoginScreen.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderBySRNumber.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmOrderDetails.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.MDIParent1.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.Resources.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.SplashScreen1.resources
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.exe
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.xml
+E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.pdb

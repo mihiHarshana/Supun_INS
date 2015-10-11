@@ -1,3 +1,5 @@
+Imports System.Net.Mail
+
 Public Class frmLoginScreen
 
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
@@ -48,5 +50,48 @@ Public Class frmLoginScreen
 
     Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         Application.Exit()
+    End Sub
+
+    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
+        'Try
+        '    Dim Smtp_Server As New SmtpClient
+        '    Dim e_mail As New MailMessage()
+        '    Smtp_Server.UseDefaultCredentials = False
+        '    Smtp_Server.Credentials = New Net.NetworkCredential("mihinduwijesena@gmail.com", "Yehemini@129#1")
+        '    Smtp_Server.Port = 25
+        '    Smtp_Server.EnableSsl = True
+        '    Smtp_Server.Host = "smtp.gmail.com"
+
+        '    e_mail = New MailMessage()
+        '    e_mail.From = New MailAddress("mihinduwijesena@gmail.com")
+        '    e_mail.To.Add("mihinduwijesena@gmail.com")
+        '    e_mail.Subject = "Email Sending"
+        '    e_mail.IsBodyHtml = False
+        '    e_mail.Body = "There are drugs already expired"
+        '    Smtp_Server.Send(e_mail)
+        '    MsgBox("Mail Sent")
+
+        'Catch error_t As Exception
+        '    MsgBox(error_t.ToString)
+        'End Try
+
+        Try
+            Dim SmtpServer As New SmtpClient()
+            Dim mail As New MailMessage()
+            SmtpServer.Credentials = New  _
+  Net.NetworkCredential("mihinduwijesena@gmail.com", "Yehemini@129#1")
+            SmtpServer.EnableSsl = True
+            SmtpServer.Port = 587
+            SmtpServer.Host = "smtp.googlemail.com"
+            mail = New MailMessage()
+            mail.From = New MailAddress("mihinduwijesena@gmail.com")
+            mail.To.Add("mihinduwijesena@gmail.com")
+            mail.Subject = "Test Mail"
+            mail.Body = "This is for testing SMTP mail from GMAIL"
+            SmtpServer.Send(mail)
+            MsgBox("mail send")
+        Catch ex As Exception
+            MsgBox(ex.ToString)
+        End Try
     End Sub
 End Class

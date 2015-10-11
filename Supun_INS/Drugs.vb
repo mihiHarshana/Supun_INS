@@ -114,6 +114,9 @@
         If value = "" Then
             Return "Amount for " & Ttype & " cannot be blank"
         End If
+        'If value.Length > 9 Then
+        '    Return "Invalid integer range."
+        'End If
         If IsNumeric(value) = False Then
             Return "Amount for " & Ttype & " cannot be Text"
         End If

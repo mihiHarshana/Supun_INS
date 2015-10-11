@@ -451,7 +451,7 @@
         If e.KeyChar = ChrW(Keys.Enter) Then
             d1.setDSRnumber(Me.txtSRNumber.Text)
             If o1.getoType = "REC" Then
-                Dim dsD = DAO.getDrugDetailsBySRNumber(d1.getDSRnumber)
+                Dim dsD = DAO.getDrugDetailsBySRNumber(d1.getDSRnumber, False)
                 ' msgB.msgOKInf(dsD.Tables(strDBNAME).Rows.Count)
                 If dsD.Tables(strDBNAME).Rows.Count = 0 Then
                     Dim res As Boolean = msgB.msgYesNoQuestion("Drug with SR number does not exisits. Do want to add new drug?")
@@ -489,7 +489,7 @@
 
             ElseIf o1.getoType = "ISS" Then
 
-                Dim dsD = DAO.getDrugDetailsBySRNumber(d1.getDSRnumber)
+                Dim dsD = DAO.getDrugDetailsBySRNumber(d1.getDSRnumber, False)
                 ' msgB.msgOKInf(dsD.Tables(strDBNAME).Rows.Count)
                 If dsD.Tables(strDBNAME).Rows.Count = 0 Then
                     msgB.msgOKInf("Sorry Drug with DSRNumber not in the system")
@@ -524,17 +524,7 @@
         End If
     End Sub
 
-    Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
 
-    End Sub
-
-    Private Sub txtRecAmount_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRecAmount.TextChanged
-
-    End Sub
-
-    Private Sub txtSRNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSRNumber.TextChanged
-
-    End Sub
 
     Private Sub dtDOExpiry_ValueChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles dtDOExpiry.ValueChanged
         If Me.rdbIssueDrug.Checked = True Then
@@ -547,6 +537,14 @@
     End Sub
 
     Private Sub txtOrderNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtOrderNumber.TextChanged
+
+    End Sub
+
+    Private Sub txtSRNumber_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtSRNumber.TextChanged
+
+    End Sub
+
+    Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
 
     End Sub
 End Class

@@ -35,13 +35,13 @@ Partial Class MDIParent1
         Me.AddUsersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChangePasswordToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HistoryToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DeleteExpiredDrugsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AboutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.DeleteExpiredDrugsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -124,6 +124,12 @@ Partial Class MDIParent1
         Me.HistoryToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
         Me.HistoryToolStripMenuItem.Text = "History"
         '
+        'DeleteExpiredDrugsToolStripMenuItem
+        '
+        Me.DeleteExpiredDrugsToolStripMenuItem.Name = "DeleteExpiredDrugsToolStripMenuItem"
+        Me.DeleteExpiredDrugsToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
+        Me.DeleteExpiredDrugsToolStripMenuItem.Text = "Delete Expired Drugs"
+        '
         'HelpToolStripMenuItem
         '
         Me.HelpToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AboutToolStripMenuItem})
@@ -140,16 +146,16 @@ Partial Class MDIParent1
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(31, 62)
+        Me.DataGridView1.Location = New System.Drawing.Point(16, 68)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(662, 188)
+        Me.DataGridView1.Size = New System.Drawing.Size(662, 298)
         Me.DataGridView1.TabIndex = 9
         '
         'Label1
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(39, 36)
+        Me.Label1.Location = New System.Drawing.Point(24, 42)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(247, 20)
         Me.Label1.TabIndex = 10
@@ -158,27 +164,21 @@ Partial Class MDIParent1
         'DataGridView2
         '
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(31, 290)
+        Me.DataGridView2.Location = New System.Drawing.Point(725, 68)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders
-        Me.DataGridView2.Size = New System.Drawing.Size(427, 151)
+        Me.DataGridView2.Size = New System.Drawing.Size(427, 289)
         Me.DataGridView2.TabIndex = 12
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(39, 263)
+        Me.Label2.Location = New System.Drawing.Point(732, 42)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(187, 20)
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Drugs Reached REOL"
-        '
-        'DeleteExpiredDrugsToolStripMenuItem
-        '
-        Me.DeleteExpiredDrugsToolStripMenuItem.Name = "DeleteExpiredDrugsToolStripMenuItem"
-        Me.DeleteExpiredDrugsToolStripMenuItem.Size = New System.Drawing.Size(182, 22)
-        Me.DeleteExpiredDrugsToolStripMenuItem.Text = "Delete Expired Drugs"
         '
         'MDIParent1
         '

@@ -39,6 +39,7 @@ Partial Class frmExpiredDrugs
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(29, 59)
         Me.DataGridView1.Name = "DataGridView1"
+        Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView1.Size = New System.Drawing.Size(489, 213)
         Me.DataGridView1.TabIndex = 0
         '
@@ -47,6 +48,7 @@ Partial Class frmExpiredDrugs
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Location = New System.Drawing.Point(641, 59)
         Me.DataGridView2.Name = "DataGridView2"
+        Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridView2.Size = New System.Drawing.Size(378, 213)
         Me.DataGridView2.TabIndex = 1
         '
@@ -120,7 +122,7 @@ Partial Class frmExpiredDrugs
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "frmExpiredDrugs"
-        Me.Text = "frmExpiredDrugs"
+        Me.Text = "Expired Drugs"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

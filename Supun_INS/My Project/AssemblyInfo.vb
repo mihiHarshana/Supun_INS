@@ -8,8 +8,8 @@ Imports System.Runtime.InteropServices
 
 ' Review the values of the assembly attributes
 
-<Assembly: AssemblyTitle("Drug Controller V2.1.1")> 
-<Assembly: AssemblyDescription("Drug Controller  V2.1.1")> 
+<Assembly: AssemblyTitle("Drug Controller V3.0")> 
+<Assembly: AssemblyDescription("Drug Controller  V3.0")> 
 <Assembly: AssemblyCompany("MhSoftSolutions")> 
 <Assembly: AssemblyProduct("Drug Controller")> 
 <Assembly: AssemblyCopyright("Copyright © MhSoftSolutions")> 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("2.0.0.2")> 
-<Assembly: AssemblyFileVersion("2.0.0.2")> 
+<Assembly: AssemblyVersion("3.0.0.0")> 
+<Assembly: AssemblyFileVersion("3.0.0.0")> 

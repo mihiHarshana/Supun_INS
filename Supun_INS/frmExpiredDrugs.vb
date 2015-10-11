@@ -33,6 +33,7 @@
             .Columns(5).Name = "Store Location"
             .Columns(6).Name = "DDID"
         End With
+        btnRemove.Enabled = False
 
         LoadDataGridData()
     End Sub
@@ -72,29 +73,35 @@
         Dim i As Integer = DataGridView1.CurrentCell.RowIndex
         With DataGridView1.Rows(i)
             If .Cells("SRNumber").Value Is Nothing Then
-                msgB.msgOKInf("Please select a row")
+                msgB.msgOKInf("Please select a drug to add to be removed list")
+                btnRemove.Enabled = False
                 Exit Sub
             End If
             DataGridView2.Rows.Add(.Cells("SRNumber").Value, .Cells("Drug Name").Value, .Cells("Manufacture Date").Value,
                                    .Cells("Expirary Date").Value, .Cells("Amount").Value, .Cells("Store Location").Value,
                                    .Cells("DDID").Value)
         End With
+        btnRemove.Enabled = True
         DataGridView1.Rows.RemoveAt(i)
     End Sub
 
     Private Sub btnRemove_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnRemove.Click
-
-        Dim i As Integer = DataGridView2.CurrentCell.RowIndex
-        With DataGridView2.Rows(i)
-            If .Cells("SRNumber").Value Is Nothing Then
-                msgB.msgOKInf("Please select a row")
-                Exit Sub
-            End If
-            DataGridView1.Rows.Add(.Cells("SRNumber").Value, .Cells("Drug Name").Value, .Cells("Manufacture Date").Value,
-                                   .Cells("Expirary Date").Value, .Cells("Amount").Value, .Cells("Store Location").Value,
-                                   .Cells("DDID").Value)
-        End With
-        DataGridView2.Rows.RemoveAt(i)
+        Try
+            Dim i As Integer = DataGridView2.CurrentCell.RowIndex
+            With DataGridView2.Rows(i)
+                If .Cells("SRNumber").Value Is Nothing Then
+                    msgB.msgOKInf("Please select a drug to be added to the active list")
+                    Exit Sub
+                End If
+                DataGridView1.Rows.Add(.Cells("SRNumber").Value, .Cells("Drug Name").Value, .Cells("Manufacture Date").Value,
+                                       .Cells("Expirary Date").Value, .Cells("Amount").Value, .Cells("Store Location").Value,
+                                       .Cells("DDID").Value)
+                btnRemove.Enabled = False
+            End With
+            DataGridView2.Rows.RemoveAt(i)
+        Catch ex As Exception
+            msgB.msgOKInf("There are no drugs available in this list ")
+        End Try
     End Sub
 
     Private Sub btnUpdate_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnUpdate.Click
@@ -113,6 +120,11 @@
     End Sub
 
     Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
+    End Sub
+
+    Private Sub DataGridView2_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+        btnRemove.Enabled = True
 
     End Sub
 End Class

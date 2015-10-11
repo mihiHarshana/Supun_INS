@@ -73,7 +73,7 @@ Partial Class frmDrugPopUp
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "frmDrugPopUp"
-        Me.Text = "DrugPopUp"
+        Me.Text = "Drug Pop Up"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

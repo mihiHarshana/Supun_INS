@@ -9,6 +9,7 @@
             .Columns(1).Name = "DrugName"
             .Columns(2).Name = "TotalStock"
             .Columns(3).Name = "REOL"
+ 
 
 
             Dim dsRA = DAO.getTotalPerSRNumber()
@@ -90,5 +91,9 @@
 
 
         End If
+    End Sub
+
+    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
+
     End Sub
 End Class

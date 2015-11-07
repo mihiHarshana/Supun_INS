@@ -238,6 +238,7 @@ Public Class classDAOAccessDB
         Catch ex As Exception
             msgB.msgOKInf(ex.Message)
 
+
         End Try
     End Function
 
@@ -647,5 +648,21 @@ Public Class classDAOAccessDB
         DAO.addHistory(Now, "editedDrug -" & btDID & " to status " & drugStatus, strLUserName)
         Return "Updated"
 
+    End Function
+
+
+    Public Function getDrugsExpiredTotPerSRNo() As DataSet
+        Try
+            Dim cuDate As Date = Now()
+            DBConnection.getAccessDBConnection(strDBNAME)
+            Dim strSQLOID As String = "SELECT dSRNumber, sum(dAvailAmt) as totExp from table_Drug where dExpDate <= #" & cuDate & "#  AND dInactive = " & False & " Group BY DSRNumber"
+            Dim dsOID As New DataSet
+            Dim daOID As New OleDb.OleDbDataAdapter(strSQLOID, DBcn)
+            daOID.Fill(dsOID, strDBNAME)
+            Return dsOID
+        Catch ex As Exception
+            msgB.msgOKInf(ex.Message)
+
+        End Try
     End Function
 End Class

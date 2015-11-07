@@ -42,6 +42,7 @@ Partial Class MDIParent1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.CalculateExpiredDrugsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -101,7 +102,7 @@ Partial Class MDIParent1
         '
         'AdministrationsToolStripMenuItem
         '
-        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem, Me.HistoryToolStripMenuItem, Me.DeleteExpiredDrugsToolStripMenuItem})
+        Me.AdministrationsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AddUsersToolStripMenuItem, Me.ChangePasswordToolStripMenuItem, Me.HistoryToolStripMenuItem, Me.DeleteExpiredDrugsToolStripMenuItem, Me.CalculateExpiredDrugsToolStripMenuItem})
         Me.AdministrationsToolStripMenuItem.Name = "AdministrationsToolStripMenuItem"
         Me.AdministrationsToolStripMenuItem.Size = New System.Drawing.Size(103, 20)
         Me.AdministrationsToolStripMenuItem.Text = "Administrations"
@@ -180,6 +181,12 @@ Partial Class MDIParent1
         Me.Label2.TabIndex = 13
         Me.Label2.Text = "Drugs Reached REOL"
         '
+        'CalculateExpiredDrugsToolStripMenuItem
+        '
+        Me.CalculateExpiredDrugsToolStripMenuItem.Name = "CalculateExpiredDrugsToolStripMenuItem"
+        Me.CalculateExpiredDrugsToolStripMenuItem.Size = New System.Drawing.Size(187, 22)
+        Me.CalculateExpiredDrugsToolStripMenuItem.Text = "Calculate Total Drugs"
+        '
         'MDIParent1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -222,5 +229,6 @@ Partial Class MDIParent1
     Friend WithEvents HistoryToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents DeleteExpiredDrugsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CalculateExpiredDrugsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

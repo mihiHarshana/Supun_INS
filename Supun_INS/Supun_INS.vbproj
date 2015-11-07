@@ -111,6 +111,12 @@
     <Compile Include="frmAddUsers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmCalTotPerSRNumber.Designer.vb">
+      <DependentUpon>frmCalTotPerSRNumber.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmCalTotPerSRNumber.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDisplayHistory.Designer.vb">
       <DependentUpon>frmDisplayHistory.vb</DependentUpon>
     </Compile>
@@ -189,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmAddUsers.resx">
       <DependentUpon>frmAddUsers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCalTotPerSRNumber.resx">
+      <DependentUpon>frmCalTotPerSRNumber.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDisplayHistory.resx">
       <DependentUpon>frmDisplayHistory.vb</DependentUpon>

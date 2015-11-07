@@ -35,6 +35,10 @@ Public Class classMDataGridL
             If (intI Mod 2) = 0 Then
                 DT.Rows(intI).DefaultCellStyle.BackColor = Color.LightCyan
             End If
+            'If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+            '    DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+            'End If
+
             'If MDIParent1.DataGridView1.Rows(intI).Cells("TRTYPE").Value = strINVALIDIN Then
             '    MDIParent1.DataGridView1.Rows(intI).DefaultCellStyle.BackColor = Color.Red
             '    ' Else

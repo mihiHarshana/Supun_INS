@@ -69,10 +69,6 @@
         End With
     End Sub
 
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
-    End Sub
-
     Private Sub txtDrugName_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtDrugName.KeyPress
         DataGridView1.Rows.Clear()
 
@@ -93,33 +89,29 @@
                     End With
 
                     dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+                    If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                        DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+                    End If
 
                 Next
             End If
-
-
-
-
             If frm_DrubPopUPStatus = "BYDSRNUMBER" Then
                 '   Me.txtDrugName.Text = string_drugname
-
                 Dim dsRDD As DataSet
-
                 dsRDD = DAO.getDrugDetailsByDSRNumber(Me.txtDrugName.Text)
-
                 Dim intI As Integer
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
                     With dsRDD.Tables(strDBNAME).Rows(intI)
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
-
                     dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+                    If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                        DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+                    End If
                 Next
-
             End If
         End If
-
     End Sub
 
     Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
@@ -136,10 +128,11 @@
 
             End With
             dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+
+            If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+            End If
         Next
-
-
-
     End Sub
 
     Private Sub txtSrNumber_KeyPress(ByVal sender As Object, ByVal e As System.Windows.Forms.KeyPressEventArgs)
@@ -149,8 +142,6 @@
 
             If frm_DrubPopUPStatus = "BYNAME" Then
                 '   Me.txtDrugName.Text = string_drugname
-
-
                 Dim dsRDD As DataSet
 
                 dsRDD = DAO.getDrugDetails(Me.txtDrugName.Text)
@@ -161,19 +152,16 @@
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                     dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+                    If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                        DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+                    End If
                 Next
             End If
 
-
-
-
             If frm_DrubPopUPStatus = "BYDSRNUMBER" Then
                 '   Me.txtDrugName.Text = string_drugname
-
                 Dim dsRDD As DataSet
-
                 dsRDD = DAO.getDrugDetailsByDSRNumber(Me.txtDrugName.Text)
-
                 Dim intI As Integer
                 For intI = 0 To dsRDD.Tables(strDBNAME).Rows.Count - 1
                     ' msgB.msgOKInf(dsRDD.Tables(strDBNAME).Rows.Count)
@@ -181,10 +169,11 @@
                         DataGridView1.Rows.Add(.Item("dLabel"), .Item("dSRNumber"), .Item("dName"), .Item("dManDate"), .Item("dExpDate"), .Item("dAvailAmt"), .Item("did"))
                     End With
                     dtColor.DataGrid1_rowcolors(dsRDD, Me.DataGridView1)
+                    If dsRDD.Tables(strDBNAME).Rows(intI).Item("dExpDate") <= Now.Date Then
+                        DataGridView1.Rows(intI).DefaultCellStyle.ForeColor = Color.Red
+                    End If
                 Next
-
             End If
         End If
     End Sub
-
 End Class

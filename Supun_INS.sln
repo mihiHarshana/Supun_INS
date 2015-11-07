@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Supun_INS", "Supun_INS\Supun_INS.vbproj", "{59F66193-B027-4BA4-A452-8774F722CFF0}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DrugControlSystem2.1.1", "DrugControlSystem2.1.1\DrugControlSystem2.1.1.vdproj", "{B0A5DF9D-BDDB-4774-83CA-C5ECB2A37416}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DrugController3.0", "DrugController3.0\DrugController3.0.vdproj", "{A5E79C0B-E0D8-4158-9858-EC0B7A537248}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 		{59F66193-B027-4BA4-A452-8774F722CFF0}.Debug|x86.Build.0 = Debug|x86
 		{59F66193-B027-4BA4-A452-8774F722CFF0}.Release|x86.ActiveCfg = Release|x86
 		{59F66193-B027-4BA4-A452-8774F722CFF0}.Release|x86.Build.0 = Release|x86
-		{B0A5DF9D-BDDB-4774-83CA-C5ECB2A37416}.Debug|x86.ActiveCfg = Debug
-		{B0A5DF9D-BDDB-4774-83CA-C5ECB2A37416}.Release|x86.ActiveCfg = Release
+		{A5E79C0B-E0D8-4158-9858-EC0B7A537248}.Debug|x86.ActiveCfg = Debug
+		{A5E79C0B-E0D8-4158-9858-EC0B7A537248}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

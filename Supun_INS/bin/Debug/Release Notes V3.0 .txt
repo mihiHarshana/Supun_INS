@@ -1,8 +1,11 @@
 Release notes for V 3.0   
 
-added field new field to table_Drug
+Added field new field to table_Drug
 dInactive Yes/No
-Follwing windows have been changed to load only the active drugs
+
+New Window
+Remove Expired Drugs
+
 
 
 

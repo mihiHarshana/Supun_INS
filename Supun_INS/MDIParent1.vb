@@ -258,16 +258,13 @@ Public Class MDIParent1
 
     Private Sub DeleteExpiredDrugsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DeleteExpiredDrugsToolStripMenuItem.Click
         Dim frm_ExpiredDrugs As New frmExpiredDrugs
-        frm_ExpiredDrugs.ShowDialog()
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(ByVal sender As System.Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
+        frm_ExpiredDrugs.MdiParent = MdiParent
+        frm_ExpiredDrugs.Show()
     End Sub
 
     Private Sub CalculateExpiredDrugsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CalculateExpiredDrugsToolStripMenuItem.Click
         Dim frm_CalTotPerSRNumber As New frmCalTotPerSRNumber
-        frm_CalTotPerSRNumber.ShowDialog()
-
+        frm_CalTotPerSRNumber.MdiParent = MdiParent
+        frm_CalTotPerSRNumber.Show()
     End Sub
 End Class

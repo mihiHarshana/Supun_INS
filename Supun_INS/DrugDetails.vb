@@ -56,6 +56,54 @@
 
     End Sub
 
+    Public Sub clearWithoutTable()
+        ' Me.txtRecAmount.Enabled = True
+        ' txtTotStock.Enabled = False ' just displaying the total
+        ' rdbIssueDrug.Checked = False
+        ' rdbRecieveDrug.Checked = False
+        lblRecieveOrderNumber.Text = "Receive  Number"
+        lblRevieceAmount.Text = "Receive Amount"
+        lblRecieveDate.Text = "Receive Date"
+        dtDOExpiry.Value = Today
+        dtManDate.Value = Today
+        dtREcDate.Value = Today
+        ' strTType = ""
+        ' strRDBText = ""
+        '  intViewed = 0
+
+        'DataGridView1.Columns.Clear()
+        'DataGridView1.ColumnCount = 8
+
+        btnAdd.Enabled = False
+        ' btnRemove.Enabled = False
+        '  btnUpdate.Enabled = False
+        btnUpdate.Focus()
+        'With DataGridView1
+
+        '    .Columns(0).Name = "Stock Label"
+        '    .Columns(1).Name = "SR Number"
+        '    .Columns(2).Name = "Drug Name"
+        '    .Columns(3).Name = "Manufacture Date"
+        '    .Columns(4).Name = "Expirary Date"
+        '    .Columns(5).Name = "Amount"
+        '    .Columns(6).Name = "Total Stock"
+        '    .Columns(7).Name = "DID"
+        '    .Columns(7).Visible = False
+
+        'End With
+
+        ' Me.lblExpiredMsg.Visible = False
+        ' Me.txtDrugName.Clear()
+        ' Me.txtRecAmount.Clear()
+        Me.txtSRNumber.Clear()
+        ' Me.txtOrderNumber.Clear()
+        ' Me.txtStockLabel.Clear()
+        Me.txtTotStock.Text = 0
+        '  Me.txtOrderNo1.Clear()
+        '  Me.txtOrderNumber.Clear()
+        'Me.txtOrderNumber.Focus()
+    End Sub
+
     Private Sub rdbRecieveDrug_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles rdbRecieveDrug.CheckedChanged
         lblRecieveOrderNumber.Text = "Receive Number"
         lblRevieceAmount.Text = "Recieve Amount"
@@ -370,6 +418,7 @@
             End If
             Me.txtRecAmount.Enabled = False
             btnAdd.Enabled = True
+            btnAdd.Focus()
         End If
     End Sub
 
@@ -459,7 +508,7 @@
                         Me.txtDrugName.Focus()
 
                     Else
-                        Call clearALL()
+                        Call clearWithoutTable()
 
                     End If
 
@@ -545,6 +594,10 @@
     End Sub
 
     Private Sub txtDrugName_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtDrugName.TextChanged
+
+    End Sub
+
+    Private Sub txtRecAmount_TextChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles txtRecAmount.TextChanged
 
     End Sub
 End Class

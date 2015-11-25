@@ -36,26 +36,30 @@ Partial Class frmExpiredDrugs
         '
         'DataGridView1
         '
+        Me.DataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(29, 59)
+        Me.DataGridView1.Location = New System.Drawing.Point(37, 59)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView1.Size = New System.Drawing.Size(489, 213)
+        Me.DataGridView1.Size = New System.Drawing.Size(436, 209)
         Me.DataGridView1.TabIndex = 0
         '
         'DataGridView2
         '
+        Me.DataGridView2.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Location = New System.Drawing.Point(641, 59)
+        Me.DataGridView2.Location = New System.Drawing.Point(533, 59)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridView2.Size = New System.Drawing.Size(378, 213)
+        Me.DataGridView2.Size = New System.Drawing.Size(381, 209)
         Me.DataGridView2.TabIndex = 1
         '
         'btnAdd
         '
+        Me.btnAdd.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.btnAdd.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink
         Me.btnAdd.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(560, 113)
+        Me.btnAdd.Location = New System.Drawing.Point(486, 103)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(38, 37)
         Me.btnAdd.TabIndex = 2
@@ -64,17 +68,19 @@ Partial Class frmExpiredDrugs
         '
         'btnRemove
         '
+        Me.btnRemove.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.btnRemove.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnRemove.Location = New System.Drawing.Point(560, 177)
+        Me.btnRemove.Location = New System.Drawing.Point(486, 169)
         Me.btnRemove.Name = "btnRemove"
-        Me.btnRemove.Size = New System.Drawing.Size(36, 38)
+        Me.btnRemove.Size = New System.Drawing.Size(37, 38)
         Me.btnRemove.TabIndex = 3
         Me.btnRemove.Text = "<"
         Me.btnRemove.UseVisualStyleBackColor = True
         '
         'btnClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(944, 300)
+        Me.btnClose.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnClose.Location = New System.Drawing.Point(839, 296)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
         Me.btnClose.TabIndex = 4
@@ -83,7 +89,8 @@ Partial Class frmExpiredDrugs
         '
         'btnUpdate
         '
-        Me.btnUpdate.Location = New System.Drawing.Point(863, 300)
+        Me.btnUpdate.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnUpdate.Location = New System.Drawing.Point(758, 296)
         Me.btnUpdate.Name = "btnUpdate"
         Me.btnUpdate.Size = New System.Drawing.Size(75, 23)
         Me.btnUpdate.TabIndex = 5
@@ -92,6 +99,9 @@ Partial Class frmExpiredDrugs
         '
         'Label1
         '
+        Me.Label1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(52, 26)
         Me.Label1.Name = "Label1"
@@ -101,6 +111,9 @@ Partial Class frmExpiredDrugs
         '
         'Label2
         '
+        Me.Label2.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+                    Or System.Windows.Forms.AnchorStyles.Left) _
+                    Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(668, 26)
         Me.Label2.Name = "Label2"
@@ -112,7 +125,7 @@ Partial Class frmExpiredDrugs
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1059, 375)
+        Me.ClientSize = New System.Drawing.Size(954, 371)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnUpdate)
@@ -122,6 +135,7 @@ Partial Class frmExpiredDrugs
         Me.Controls.Add(Me.DataGridView2)
         Me.Controls.Add(Me.DataGridView1)
         Me.Name = "frmExpiredDrugs"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Expired Drugs"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()

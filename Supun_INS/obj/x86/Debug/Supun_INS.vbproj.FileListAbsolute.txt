@@ -42,3 +42,4 @@ E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.xml
 E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.pdb
 E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmExpiredDrugs.resources
 E:\gitProjects\Supun_INS\Supun_INS\obj\x86\Debug\Supun_INS.frmCalTotPerSRNumber.resources
+E:\gitProjects\Supun_INS\Supun_INS\bin\Debug\Supun_INS.exe.config

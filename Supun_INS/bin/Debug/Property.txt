@@ -1,0 +1,2 @@
+dbname=INS1
+warninginMonths=6

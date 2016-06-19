@@ -101,6 +101,8 @@ Public Class MDIParent1
     End Sub
 
     Private Sub MDIParent1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Label1.Text = "Drugs expire in " & rwtfData(1, 1) & " months"
         DataGridView1.Columns.Clear()
         DataGridView1.ColumnCount = 6
         With DataGridView1
@@ -160,8 +162,10 @@ Public Class MDIParent1
 
     Public Sub LoadDataGridData()
         DataGridView1.Rows.Clear()
+        Dim intMonth As Integer = rwtfData(1, 1).ToString
 
-        Dim dsD = DAO.getDrugsExpireInThreeMonths()
+
+        Dim dsD = DAO.getDrugsExpireInThreeMonths(intMonth)
 
         Try
             Dim intI As Integer
@@ -267,4 +271,5 @@ Public Class MDIParent1
         frm_CalTotPerSRNumber.MdiParent = MdiParent
         frm_CalTotPerSRNumber.Show()
     End Sub
+
 End Class

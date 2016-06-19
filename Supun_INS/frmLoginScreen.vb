@@ -3,6 +3,7 @@ Imports System.Net.Mail
 Public Class frmLoginScreen
 
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
+
         DBConnection.getAccessDBConnection(strDBNAME)
 
         If Me.txtUserName.Text = "" Then
@@ -39,6 +40,25 @@ Public Class frmLoginScreen
     End Sub
 
     Private Sub frmLoginScreen_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        Dim rwtf As New classReadWriteTextFile
+        ' Dim rwtfData As Array
+
+        rwtfData = rwtf.GetPropertyFileDAta()
+
+
+
+
+
+        'Dim IntI As Integer
+        'For IntI = 0 To rwtfData.GetLength(0) - 1
+        '    msgB.msgOKInf(rwtfData(IntI, 1))
+
+        'Next
+
+
+        Module1.strDBNAME = rwtfData(0, 1)
+
         Me.txtUserName.Focus()
 
         'Me.txtUserName.Text = "Admin"

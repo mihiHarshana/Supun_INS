@@ -1,5 +1,5 @@
 ﻿Module Module1
-    Public strDBNAME As String = "INS"
+    Public strDBNAME As String
     Public DBcn As New OleDb.OleDbConnection
 
     Public STRTITLE As String = "Message"
@@ -23,7 +23,7 @@
 
     Public d1 As New Drugs
     Public o1 As New Order
-    Public Const strVersion As String = "V3.1 Build 25112015_1820"
+    Public Const strVersion As String = "V3.2 Build 19062016_1133 "
 
     Public dtColor As New classMDataGridL
     Public blnDrugPopUpFromMenu As Boolean = False
@@ -32,5 +32,7 @@
 
     Public strLUserName As String = ""
     Public strLUType As String = ""
+
+    Public rwtfData(1, 1) As String
 
 End Module

@@ -101,34 +101,54 @@ Public Class MDIParent1
     End Sub
 
     Private Sub MDIParent1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        Me.Label3.Visible = False
+        If strVersion <> "Demo Version" Then
+            Label1.Text = "Drugs expire in " & rwtfData(1, 1) & " months"
+            DataGridView1.Columns.Clear()
+            DataGridView1.ColumnCount = 6
+            With DataGridView1
 
-        Label1.Text = "Drugs expire in " & rwtfData(1, 1) & " months"
-        DataGridView1.Columns.Clear()
-        DataGridView1.ColumnCount = 6
-        With DataGridView1
+                .Columns(0).Name = "SRNumber"
+                .Columns(1).Name = "Drug Name"
+                .Columns(2).Name = "Manufacture Date"
+                .Columns(3).Name = "Expirary Date"
+                .Columns(4).Name = "Amount"
+                .Columns(5).Name = "Store Location"
+            End With
 
-            .Columns(0).Name = "SRNumber"
-            .Columns(1).Name = "Drug Name"
-            .Columns(2).Name = "Manufacture Date"
-            .Columns(3).Name = "Expirary Date"
-            .Columns(4).Name = "Amount"
-            .Columns(5).Name = "Store Location"
-        End With
-
-        With DataGridView2
-            .Columns.Clear()
-            .ColumnCount = 3
-            .Columns(0).Name = "SRNumber"
-            .Columns(1).Name = "Drug Name"
-            .Columns(2).Name = "Available Amount"
-        End With
+            With DataGridView2
+                .Columns.Clear()
+                .ColumnCount = 3
+                .Columns(0).Name = "SRNumber"
+                .Columns(1).Name = "Drug Name"
+                .Columns(2).Name = "Available Amount"
+            End With
 
 
 
-        Call LoadDataGridData()
-        Call LoadGrid2Data()
-        '  Me.Text = "Inventory Control System " & strVersion & "| User - " & strLUserName & "User Type -" & strLUType
-        Me.Refresh()
+            Call LoadDataGridData()
+            Call LoadGrid2Data()
+            '  Me.Text = "Inventory Control System " & strVersion & "| User - " & strLUserName & "User Type -" & strLUType
+            Me.Refresh()
+
+        End If
+
+        If strVersion = "Demo Version" Then
+            'InventoryToolStripMenuItem.Enabled = False
+            DrugListToolStripMenuItem.Enabled = False
+            OrdersToolStripMenuItem.Enabled = False
+            TotalPerSRNoToolStripMenuItem.Enabled = False
+            LogOutToolStripMenuItem.Enabled = False
+            AddUsersToolStripMenuItem.Enabled = False
+            ChangePasswordToolStripMenuItem.Enabled = False
+            HistoryToolStripMenuItem.Enabled = False
+
+            Me.Label3.Visible = True
+
+        Else
+            LicenseToolStripMenuItem.Visible = False
+        End If
+
     End Sub
 
     Private Sub DrugListToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles DrugListToolStripMenuItem.Click
@@ -272,4 +292,17 @@ Public Class MDIParent1
         frm_CalTotPerSRNumber.Show()
     End Sub
 
+    Private Sub FileToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles FileToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LicenseToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LicenseToolStripMenuItem.Click
+        Dim frmLicensee As New frmLicense
+        frmLicense.ShowDialog()
+
+    End Sub
+
+    Private Sub MenuStrip_ItemClicked(ByVal sender As System.Object, ByVal e As System.Windows.Forms.ToolStripItemClickedEventArgs) Handles MenuStrip.ItemClicked
+
+    End Sub
 End Class

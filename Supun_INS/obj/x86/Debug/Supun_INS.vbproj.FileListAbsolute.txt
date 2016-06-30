@@ -67,3 +67,4 @@ E:\MyThings\GitRepository\SupunINS\Supun_INS\obj\x86\Debug\GenerateResource.writ
 E:\MyThings\GitRepository\SupunINS\Supun_INS\obj\x86\Debug\Supun_INS.exe
 E:\MyThings\GitRepository\SupunINS\Supun_INS\obj\x86\Debug\Supun_INS.xml
 E:\MyThings\GitRepository\SupunINS\Supun_INS\obj\x86\Debug\Supun_INS.pdb
+E:\MyThings\GitRepository\SupunINS\Supun_INS\obj\x86\Debug\Supun_INS.frmLicense.resources

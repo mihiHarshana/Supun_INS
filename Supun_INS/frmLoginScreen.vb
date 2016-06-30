@@ -2,6 +2,12 @@ Imports System.Net.Mail
 
 Public Class frmLoginScreen
 
+    Private rSubKey As String = "DRG"
+    Private rValue As String = "value1"
+    Private rExDate As String = "value2"
+    Private regData As String = "Demo Version1"
+    Private regDate As String
+
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
 
         DBConnection.getAccessDBConnection(strDBNAME)
@@ -64,6 +70,54 @@ Public Class frmLoginScreen
         'Me.txtUserName.Text = "Admin"
         'Me.txtPassword.Text = "Admin"
         Me.Text = strVersion
+
+
+
+
+        Dim rwRegistry As New classReadWriteRegistry
+
+        Dim regValue As String = rwRegistry.getValueFromRegistryByPath(rSubKey, rValue)
+        Dim regDateValue As String = rwRegistry.getValueFromRegistryByPath(rSubKey, rExDate)
+        If regValue = "NOTHING" Then
+            regDate = Date.Now
+
+            rwRegistry.setValueToRegistry(rSubKey, rValue, regData)
+            rwRegistry.setValueToRegistry(rSubKey, rExDate, regDate)
+            Me.txtUserName.Text = "Demo"
+            Me.txtPassword.Text = "Demo"
+            Dim res As String = DAO.getUsers(Me.txtUserName.Text)
+            If res <> STROK Then
+                DAO.addUsers(DAO.getUserCount(), Me.txtUserName.Text, Me.txtPassword.Text, "User")
+            End If
+
+        Else
+            Dim dateTime As DateTime
+            dateTime = regDateValue
+            If regValue = "Demo Version" And dateTime.AddDays(7) < Date.Now Then
+
+                'If dateTime > Date.Now Then
+                Me.txtUserName.Text = "Demo"
+                Me.txtPassword.Text = "Demo"
+
+                Dim res As String = DAO.getUsers(Me.txtUserName.Text)
+                If res <> STROK Then
+                    DAO.addUsers(DAO.getUserCount(), Me.txtUserName.Text, Me.txtPassword.Text, "User")
+                End If
+            ElseIf (dateTime.AddYears(1) < Date.Now) Then
+                msgB.msgOKCri("License Expired. Contact mhsoftsolutions for new license")
+                Application.Exit()
+            Else
+                strVersion = regValue & strVersion_Nu
+                Me.Text = strVersion
+        
+            End If
+
+
+        End If
+
+
+
+
 
 
     End Sub

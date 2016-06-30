@@ -23,7 +23,9 @@
 
     Public d1 As New Drugs
     Public o1 As New Order
-    Public Const strVersion As String = "V3.2 Build 19062016_1133 "
+    ' Public Const strVersion As String = "V3.2 Build 19062016_1133 "
+    Public strVersion As String = "Demo Version"
+    Public Const strVersion_Nu As String = "  V3.2 Build 19062016_1133 "
 
     Public dtColor As New classMDataGridL
     Public blnDrugPopUpFromMenu As Boolean = False

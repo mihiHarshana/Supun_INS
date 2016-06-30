@@ -15,19 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_38A29A22F12D4C0B9D300390464F12C7"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_4E0DDBAFB72D4AA4B33ACE6CA2257345"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_60D6ACA74C2E4BDE89EDDD9F7400F0C9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -51,7 +39,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DC99EFE4F58145E4A018CB24C9168778"
+        "MsmKey" = "8:_DF8F407E666C42CDA846B341331124DA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -153,6 +141,19 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.0,Profile=Client"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4 Client Profile (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.0,Profile=Client"
+                    }
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Windows.Installer.3.1"
+                    {
+                    "Name" = "8:Windows Installer 3.1"
+                    "ProductCode" = "8:Microsoft.Windows.Installer.3.1"
+                    }
+                }
             }
         }
     }
@@ -183,46 +184,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_38A29A22F12D4C0B9D300390464F12C7"
-            {
-            "SourcePath" = "8:..\\Supun_INS\\bin\\Debug\\Supun_INS.vshost.exe.manifest"
-            "TargetName" = "8:Supun_INS.vshost.exe.manifest"
-            "Tag" = "8:"
-            "Folder" = "8:_B0E10814A51349E5A685894BDF96A518"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60D6ACA74C2E4BDE89EDDD9F7400F0C9"
-            {
-            "SourcePath" = "8:..\\Supun_INS\\bin\\Debug\\EmptyTable.mdb"
-            "TargetName" = "8:EmptyTable.mdb"
-            "Tag" = "8:"
-            "Folder" = "8:_B0E10814A51349E5A685894BDF96A518"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6B5D7331E16E65535905C54FD7D0DCF0"
             {
             "AssemblyRegister" = "3:1"
@@ -305,10 +266,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DC99EFE4F58145E4A018CB24C9168778"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF8F407E666C42CDA846B341331124DA"
             {
-            "SourcePath" = "8:..\\Supun_INS\\bin\\Debug\\Release Notes V3.0 .txt"
-            "TargetName" = "8:Release Notes V3.0 .txt"
+            "SourcePath" = "8:..\\Supun_INS\\bin\\Debug\\Property.txt"
+            "TargetName" = "8:Property.txt"
             "Tag" = "8:"
             "Folder" = "8:_B0E10814A51349E5A685894BDF96A518"
             "Condition" = "8:"
@@ -442,7 +403,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DrugController3.0.1"
         "ProductCode" = "8:{C60689A2-4DEA-42B6-B931-A0E2ECD0D82F}"
-        "PackageCode" = "8:{1F03F3D7-92C2-4C07-8F32-B810A1E54CC5}"
+        "PackageCode" = "8:{9E180C2D-C0F0-4E13-9346-23C729D17C45}"
         "UpgradeCode" = "8:{ACDC1AB0-BC73-4CDB-86E0-912B4EAD3766}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

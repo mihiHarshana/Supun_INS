@@ -1,2 +1,2 @@
-dbname=INS1
+dbname=INS
 warninginMonths=6
